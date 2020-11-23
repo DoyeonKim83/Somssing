@@ -12,10 +12,11 @@ public class LoginController implements Controller {
 	public String execute (HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String user_id = request.getParameter("user_id");
 		String password = request.getParameter("password");
-		
+		UserManager manager;
 		try {
 			System.out.println("login controller : 1");
-			UserManager.getInstance().login(user_id , password);
+			manager = UserManager.getInstance();
+			boolean result = manager.login(user_id , password);
 			
 			System.out.println("login controller : 2");
 			HttpSession session = request.getSession();
@@ -23,7 +24,7 @@ public class LoginController implements Controller {
 			System.out.println("login controller : 3");
 			return "/MainPage.jsp";
 		} catch (Exception e) {
-
+			System.out.println("login controller error!");
 			request.setAttribute ("loginFailed", true);
 			request.setAttribute("exception", e);
 			return "/user/loginForm.jsp";

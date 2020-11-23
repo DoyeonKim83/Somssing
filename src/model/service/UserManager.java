@@ -30,22 +30,26 @@ public class UserManager {
 	}
 	
 	public SomUser findUser(String userId) throws SQLException, UserNotFoundException {
+		System.out.println("finduser manager : 0");
 		SomUser user = userDAO.findUser(userId);
+		System.out.println("finduser manager : 1");
 		if (user == null) {
 			throw new UserNotFoundException(userId + "는 존재하지 않는 아이디입니다.");
 		}
 		//다음 등급까지 남은 횟수 처리를 위한 비즈니스 로직
+		System.out.println("finduser manager : 4");
 		if (user.getGrade().equals("BRONZE"))
 			user.setNextlevel_time(6 - user.getRent_time());
 		else if (user.getGrade().equals("SILVER"))
 			user.setNextlevel_time(15 - user.getRent_time());
 		else if (user.getGrade().equals("GOLD"))
 			user.setNextlevel_time(0);
-		
+		System.out.println("finduser manager : 5");
 		return user;
 	}
 	public boolean login(String userId, String password) throws SQLException, UserNotFoundException, PasswordMismatchException 
 	{
+		System.out.println("login manager : 0");
 		SomUser user = findUser(userId);
 		System.out.println("login manager : 1");
 		if (!user.matchPassword(password)) {

@@ -187,7 +187,7 @@ public class SomUserDao {
 		ResultSet rs = null;
 
 		String sql = "SELECT password, username, email, phone, addr, birth, gender, grade, remain_time, count(r.bike_id) AS numofid "
-				+ "FROM SOM_USER s, RENT r " + "WHERE s.user_id=? and s.user_id = r.user_id "
+				+ "FROM SOM_USER s, RENT r " + "WHERE s.user_id=? and s.user_id = r.user_id (+) "
 				+ "GROUP BY password, username, email, phone, addr, birth, gender, grade, remain_time";
 
 		try {
