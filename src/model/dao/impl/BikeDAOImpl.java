@@ -221,57 +221,6 @@ public class BikeDAOImpl implements BikeDao {
 		return null;
 	}
 
-	@Override
-	// 내가 고장 신고접수한 자전거list 상세정보 보기
-	public List<BikeBrokenOrLost> getBikeBrokenOrLostList(String user_id) {
-
-		Connection conn = null;
-		PreparedStatement pStmt = null; // PreparedStatment 참조 변수 생성
-		ResultSet rs = null;
-
-		String query = "SELECT bike_id, rental_name, rental_id, broken_ok, lost_ok " + "FROM BIKE b, RENT r"
-				+ "WHERE user_id = ? and b.bike_id = r.bike_id";
-
-		try {
-			conn = getConnection();
-			pStmt = conn.prepareStatement(query);
-			pStmt.setString(1, user_id);
-			rs = pStmt.executeQuery();
-
-			List<BikeBrokenOrLost> list = new ArrayList<BikeBrokenOrLost>();
-			while (rs.next()) {
-				String bike_id = rs.getString("bike_id");
-				String rental_name = rs.getString("rental_name");
-				String rental_id = rs.getString("rental_id");
-				String why_broken = rs.getString("why_broken");
-
-				BikeBrokenOrLost bikebroken = new BikeBrokenOrLost(bike_id, rental_name, rental_id, why_broken);
-				list.add(bikebroken);
-			}
-			return list;
-		} catch (SQLException ex) {
-			ex.printStackTrace();
-		} finally { // 자원 반납
-			if (rs != null)
-				try {
-					rs.close();
-				} catch (SQLException ex) {
-					ex.printStackTrace();
-				}
-			if (pStmt != null)
-				try {
-					pStmt.close();
-				} catch (SQLException ex) {
-					ex.printStackTrace();
-				}
-			if (conn != null)
-				try {
-					conn.close();
-				} catch (SQLException ex) {
-					ex.printStackTrace();
-				}
-		}
-		return null;
-	}
+	
 
 }

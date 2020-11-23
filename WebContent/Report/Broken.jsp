@@ -11,8 +11,17 @@
 * {
    font-family: 'Nanum Gothic', sans-serif;
 }
+
+#btn {
+            width : 250px;
+            height : 30px;
+            border : 1px solid  #ab2948;
+            background-color :  #ab2948;
+            color : #FFFFFF;
+            border-radius : 30px;
+         }
+         
 </style>
-<meta charset="UTF-8">
 <title>고장 신고</title>
 </head>
 
@@ -24,17 +33,14 @@
    <div style="padding:5px 20px 0px 20px" align="center">
       <div style="padding:0px 10px 0px 10px; height:170px;">
          <form action="<c:url value='/report/choice/broken' />">
-            &nbsp;&nbsp;&nbsp;자전거 일련번호 <input type="text" name="bike_id" style="border:1px solid #ab2948;">
-            &nbsp;&nbsp;&nbsp;대여소 장소 <input type="text" name="rentalOffice_name" style="border:1px solid #ab2948;"><br><br>
-            &nbsp;&nbsp;&nbsp;대여소 아이디<input type="text" name="rentalOffice_id" style="border:1px solid #ab2948;"><br><br>
-            &nbsp;&nbsp;&nbsp;사유<input type="text" name="why_BrokenOrLost" style="width:60%; height:70px; border:1px solid #ab2948;"><br><br>
-            <input type="submit" value="접수하기"><br><br>
+            &nbsp;&nbsp;&nbsp;자전거 일련번호&nbsp;&nbsp;<input type="text" name="bike_id" style="border:1px solid #ab2948;">
+            &nbsp;&nbsp;&nbsp;대여소 장소&nbsp;&nbsp;<input type="text" name="rentalOffice_name" style="border:1px solid #ab2948;"><br><br>
+            &nbsp;&nbsp;&nbsp;대여소 아이디&nbsp;&nbsp;<input type="text" name="rentalOffice_id" style="border:1px solid #ab2948;"><br><br>
+            &nbsp;&nbsp;&nbsp;사유&nbsp;&nbsp;<input type="text" name="why_BrokenOrLost" style="width:60%; height:70px; border:1px solid #ab2948;"><br><br>
+            <input id="btn" type="submit" value="접수하기"><br><br>
          </form>
       </div>
-   
    </div>
-   
-
 </div>
 </body>
 </html>

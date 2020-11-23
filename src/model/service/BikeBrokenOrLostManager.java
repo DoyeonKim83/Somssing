@@ -28,12 +28,16 @@ public class BikeBrokenOrLostManager {
       return bikeBrokenOrLostDao.getBikeBrokenOrLostList(user_id);
    }
 
-   public void insertBikeBroken(String bike_id, String rentalOffice_name, 
+   public int insertBikeBroken(String bike_id, String rentalOffice_name, 
          String rentalOffice_id, String why_BrokenOrLost) {
+			return bikeBrokenOrLostDao.insertBikeBroken(bike_id, 
+					rentalOffice_name, rentalOffice_id, why_BrokenOrLost);
    }
    
-   public void insertBikeLost(String bike_id, String rentalOffice_name, 
+   public int insertBikeLost(String bike_id, String rentalOffice_name, 
          String rentalOffice_id, String why_BrokenOrLost) {
+	   		return bikeBrokenOrLostDao.insertBikeLost(bike_id, 
+					rentalOffice_name, rentalOffice_id, why_BrokenOrLost);
    }
 
    

@@ -36,7 +36,7 @@
 	
 	<div style=" width:100%; height:80%; border: 1px solid white;">
 		<div align="right" style="height:7%; padding:40px 150px 40px 150px;">
-		<button id = "searchBtn" onclick="<c:url value='/search/rentalOffice' />"/>대여소 검색하기
+		<input type="button" id="searchBtn" value="대여소 검색하기" onclick="location.href='<c:url value='/search/rentalOffice' />'">
 		</div>
 	</div>
 	

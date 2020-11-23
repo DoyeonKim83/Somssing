@@ -70,7 +70,7 @@ public class BikeBrokenOrLostDAOImpl implements BikeBrokenOrLostDao {
    }
 
    @Override
-   public void insertBikeBroken(String bike_id, String rentalOffice_name, 
+   public int insertBikeBroken(String bike_id, String rentalOffice_name, 
          String rentalOffice_id, String why_BrokenOrLost) {
       
       Connection conn = null;
@@ -88,40 +88,54 @@ public class BikeBrokenOrLostDAOImpl implements BikeBrokenOrLostDao {
          
          pStmt = conn.prepareStatement(query);
          pStmt.setString(1, bike_id);
-         pStmt.executeUpdate();
-   
-         rs = pStmt.executeQuery();
          
-      
-         pStmt.close();   
-
-         
-      } catch (SQLException ex) {
-         ex.printStackTrace();
-      } finally { // 자원 반납
-         if (rs != null)
-            try {
-               rs.close();
-            } catch (SQLException ex) {
-               ex.printStackTrace();
-            }
-         if (pStmt != null)
-            try {
-               pStmt.close();
-            } catch (SQLException ex) {
-               ex.printStackTrace();
-            }
-         if (conn != null)
-            try {
-               conn.close();
-            } catch (SQLException ex) {
-               ex.printStackTrace();
-            }
-      }
+         int result = pStmt.executeUpdate();
+        
+         if (result != 0) {
+				conn.commit();
+			} else {
+				conn.rollback();
+			}
+         	return result;
+		} catch (SQLException ex) {
+			try {
+				conn.rollback();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			ex.printStackTrace();
+		} finally { // 자원 반납
+			try {
+				conn.setAutoCommit(true);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			if (pStmt != null)
+				try {
+					pStmt.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+		}
+		return 0;
    }
    
    @Override
-   public void insertBikeLost(String bike_id, String rentalOffice_name, 
+   public int insertBikeLost(String bike_id, String rentalOffice_name, 
          String rentalOffice_id, String why_BrokenOrLost) {
       
 
@@ -140,35 +154,49 @@ public class BikeBrokenOrLostDAOImpl implements BikeBrokenOrLostDao {
       
       pStmt = conn.prepareStatement(query);
       pStmt.setString(1, bike_id);
-      pStmt.executeUpdate();
-   
-      rs = pStmt.executeQuery();
-      
-   
-      pStmt.close();   
-   
-      
-   } catch (SQLException ex) {
-      ex.printStackTrace();
-   } finally { // 자원 반납
-      if (rs != null)
-         try {
-            rs.close();
-         } catch (SQLException ex) {
-            ex.printStackTrace();
-         }
-      if (pStmt != null)
-         try {
-            pStmt.close();
-         } catch (SQLException ex) {
-            ex.printStackTrace();
-         }
-      if (conn != null)
-         try {
-            conn.close();
-         } catch (SQLException ex) {
-            ex.printStackTrace();
-         }
-      }
+      int result = pStmt.executeUpdate();
+  
+      if (result != 0) {
+			conn.commit();
+		} else {
+			conn.rollback();
+		}
+		return result;
+	} catch (SQLException ex) {
+		try {
+			conn.rollback();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ex.printStackTrace();
+	} finally { // 자원 반납
+		try {
+			conn.setAutoCommit(true);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (rs != null)
+			try {
+				rs.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		if (pStmt != null)
+			try {
+				pStmt.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		if (conn != null)
+			try {
+				conn.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+	}
+	return 0;
+
    }
 }

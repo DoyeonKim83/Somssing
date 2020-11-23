@@ -93,7 +93,7 @@ public class RentalOfficeDAOImpl implements RentalOfficeDao {
 		
 		String query = "SELECT area, rental_name, rental_id, latitude, longitude "
 					+ "FROM rentaloffice "
-					+ "WHERE rental_name = ?";
+					+ "WHERE rental_id = ?";
 		
 		try {
 			conn = getConnection();

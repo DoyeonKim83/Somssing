@@ -42,16 +42,23 @@ public class RequestMapping {
         mappings.put("/user/logout", new LogoutController());
         mappings.put("/user/grade", new ForwardController("/user/grade.jsp"));
         
+ 
         //search
         mappings.put("/search/choice/area", new ForwardController("/RentalOffice/ByArea.jsp"));
         mappings.put("/search/choice/id", new ForwardController("/RentalOffice/ById.jsp"));
         mappings.put("/search/choice/name", new ForwardController("/RentalOffice/ByName.jsp"));
+
         mappings.put("/search/rentalOffice", new ForwardController("/RentalOffice/Search.jsp"));
+     
         mappings.put("/search/rentalOffice/ByArea", new SearchRentalOfficeByAreaController());
         mappings.put("/search/rentalOffice/ById", new SearchRentalOfficeByIdController());
         mappings.put("/search/rentalOffice/ByName", new SearchRentalOfficeByNameController());
         
-        mappings.put("/report/choice", new ForwardController("/MenuPage.jsp"));
+        mappings.put("/report/choice", new ForwardController("/Report/Choice.jsp"));
+        
+        mappings.put("/report/broken", new ForwardController("/Report/Broken.jsp"));
+        mappings.put("/report/lost", new ForwardController("/Report/Lost.jsp"));
+        
         mappings.put("/report/choice/broken", new ReportBikeBrokenController());
         mappings.put("/report/choice/lost", new  ReportBikeLostController());
         

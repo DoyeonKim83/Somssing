@@ -14,9 +14,10 @@ public class SearchRentalOfficeByNameController implements Controller {
        
       RentalOfficeManager manager = RentalOfficeManager.getInstance();
       String rentalOffice_name = request.getParameter("rentalOffice_name");
+      //System.out.println(rentalOffice_name);
       
       RentalOffice result2 = new RentalOffice();
-      result2 = manager.getRentalOfficeById(rentalOffice_name);
+      result2 = manager.getRentalOfficeByName(rentalOffice_name);
       
       if (result2 == null) {
          return "/RentalOffice/ByName.jsp";

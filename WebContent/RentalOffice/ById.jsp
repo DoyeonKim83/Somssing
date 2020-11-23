@@ -28,7 +28,7 @@
    <input type="submit" value="검색" style="background-color:#ab2948;
    border-radius:30px; color:#FFFFFF;"/>
    <br><br><br>
-   <div>검색어 추천 <br>
+   <div>검색어 추천 <br><br>
    10000, 10001, 10002<br> 
    20000, 20001<br> 
    30000, 30001<br>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,36 +9,45 @@
 <title>대여소 검색</title>
 </head>
 <body>
-
+<style>
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+* {
+   font-family: 'Nanum Gothic', sans-serif;
+}
+#Btn {
+            width : 250px;
+            height : 100px;
+            border : 1px solid  #ab2948;
+            background-color :  #ab2948;
+            color : #FFFFFF;
+            border-radius : 30px;
+         }
+         
+</style>
 <div align="center">
 <h2>대여소 검색하기</h2>
 </div>
-
 <br><br>
+
 <div align="center" >
-<div style="border: 1px solid red;">
-<button style="width: 250px; height:100px;" type="button"  onclick="self.location = 'ByArea.jsp'">
+
+<div>
+<button id="Btn" onclick="location.href='<c:url value='/search/choice/area'/>'">
 지역별 모아보기
-</div><br><br>
-<div style="border: 1px solid blue;">
-<button style="width: 250px; height:100px;" type="button" value="대여소 아이디로 검색" onclick="self.location = 'ById.jsp'">
+</button></div>
+<br><br>
+
+<div>
+<button id="Btn" onclick="location.href='<c:url value='/search/choice/id'/>'">
 대여소 아이디로 검색
-</div>
-<div style="border:1px solid red;">
-<button style="width: 250px; height:100px;" type="button" onclick="self.location = 'ByName.jsp'">
+</button></div>
+<br><br>
+
+<div>
+<button id="Btn" onclick="location.href='<c:url value='/search/choice/name'/>'">
 대여소 이름으로 검색
-</div><br><br>
+</button></div>
 
-
-</div>
-
-
-<div align="right" style="height:7%">
-   <form action="RentalOfficeSearch.jsp" name="search" action="" method="post">
-   대여소 검색&nbsp;&nbsp;
-   <input type="text" >&nbsp;&nbsp;
-   <input type="submit" value="검색" style="background-color :  #ab2948;border-radius : 30px; color : #FFFFFF;"/>
-   </form>
 </div>
 
 
