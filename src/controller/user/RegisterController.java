@@ -16,7 +16,7 @@ import model.service.UserManager;
 public class RegisterController implements Controller {
 
 	public String execute (HttpServletRequest request, HttpServletResponse response) throws Exception {
-		java.text.DateFormat df = new java.text.SimpleDateFormat("yyyy/MM/dd");
+		java.text.DateFormat df = new java.text.SimpleDateFormat("yyyy-MM-dd");
 		System.out.println("controller : 1");
 		SomUser user = new SomUser(request.getParameter("user_id"), request.getParameter("password")
 						, request.getParameter("userName"), request.getParameter("email"), request.getParameter("phone")
