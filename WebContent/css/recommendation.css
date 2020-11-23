@@ -1,0 +1,24 @@
+@import url(http://www.openhiun.com/hangul/nanumbarungothic.css);
+* {
+	font-family: 'Nanum Barun Gothic', sans-serif;
+	margin-left: auto; margin-right: auto;
+	text-align : center;
+}
+#whiteButton {
+		width : 50px;
+		height : 35px;
+		border : 1px solid  #ab2948;
+		color :  #ab2948;
+		background-color : #FFFFFF;
+		border-radius : 30px;
+
+}
+table, tr {
+	border : 1px solid grey;
+}
+table {
+	border-collapse: collapse;
+}
+tr {
+	height : 35;
+}
