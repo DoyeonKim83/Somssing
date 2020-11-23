@@ -115,7 +115,7 @@ function Increment() {
 <div align = "center">
 <br>
 <!-- write Form  -->
-<form name="f" method="GET" action="<c:url value='/ticket/buy'/>">
+<form name="f" method="POST" action="<c:url value='/ticket/buy'/>">
        
 	<h3>이용권 구매 안내</h3> 
 	

@@ -53,12 +53,12 @@
 			    <td><a href="<c:url value='/' />"><div class="menu">대여정보</div></a></td>
 			</tr>
 			<tr>
-			    <td><a href="<c:url value='/ticket/buy/form' />"><div class="menu">이용권결제</div></a></td>
-			    <td><a href="<c:url value='/' />"><div class="menu">매칭게시판</div></a></td>
+			    <td><a href="<c:url value='/ticket/buyForm' />"><div class="menu">이용권결제</div></a></td>
+			    <td><a href="<c:url value='/matching/list' />"><div class="menu">매칭게시판</div></a></td>
 			</tr>
 			<tr>
 			    <td><a href="<c:url value='/recommendation' />"><div class="menu">추천코스</div></a></td>
-			    <td><a href="<c:url value='/report' />"><div class="menu">고장/분실 신고</div></a></td>
+			    <td><a href="<c:url value='/report/choice '/>"><div class="menu">고장/분실 신고</div></a></td>
 			</tr>
 		 </table>
 	 </div>

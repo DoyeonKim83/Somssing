@@ -43,7 +43,9 @@ public class RequestMapping {
         mappings.put("/user/grade", new ForwardController("/user/grade.jsp"));
         
         //search
-
+        mappings.put("/search/choice/area", new ForwardController("/RentalOffice/ByArea.jsp"));
+        mappings.put("/search/choice/id", new ForwardController("/RentalOffice/ById.jsp"));
+        mappings.put("/search/choice/name", new ForwardController("/RentalOffice/ByName.jsp"));
         mappings.put("/search/rentalOffice", new ForwardController("/RentalOffice/Search.jsp"));
         mappings.put("/search/rentalOffice/ByArea", new SearchRentalOfficeByAreaController());
         mappings.put("/search/rentalOffice/ById", new SearchRentalOfficeByIdController());
@@ -59,9 +61,10 @@ public class RequestMapping {
         
         //  matching
         mappings.put("/matching/list", new MatchingListController());
-        mappings.put("/matching/ckeckPost", new MatchingPostCheckController());
+        mappings.put("/matching/checkPost", new MatchingPostCheckController());
         mappings.put("/matching/update", new MatchingUpdatePostController());
         mappings.put("/matching/updateForm", new ForwardController("/matching/matchingUpdatePost.jsp"));
+        mappings.put("/matching/writeForm", new ForwardController("/matching/matchingWriting.jsp"));
         mappings.put("/matching/write", new MatchingWritingController());
         mappings.put("/matching/delete", new MatchingDeletePostController());
 

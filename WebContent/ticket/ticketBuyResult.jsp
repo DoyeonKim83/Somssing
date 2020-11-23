@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,10 +8,7 @@ pageEncoding="UTF-8"%>
 <title>이용권 구매 완료</title>
 </head>
 <script>
-function gomain() {
-	f.action = "../index.jsp";
-	f.submit();
-}
+
 </script>
 <style>
 	@import url(http://www.openhiun.com/hangul/nanumbarungothic.css);
@@ -52,7 +50,7 @@ function gomain() {
 	회원님의 앞으로 이용가능한 시간: <br><text style="font-size:20px; color:red;" >${user.remain_time}</text>
 	</td> </tr> </table>
 	<br><br>
-	<input type = "button" value = "홈으로 이동" id = "gomainbtn" onClick="location.href='<c:url value='/menu' />'">	
+	<input type = "button" value = "홈으로 이동" id = "gomainbtn" onClick="location.href='<c:url value='/main' />'">	
 	
 </div>
 

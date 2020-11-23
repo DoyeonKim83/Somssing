@@ -362,12 +362,13 @@ public class SomUserDao {
 		PreparedStatement pStmt = null; // PreparedStatment 참조 변수 생성
 		ResultSet rs = null;
 
-		String query = "update SOM_USER" + " set remain_time = remain_time " + time + " where user_id = ?";
+		String query = "update SOM_USER" + " set remain_time = remain_time + ? where user_id = ?";
 
 		try {
 			conn = cm.getConnection();
 			pStmt = conn.prepareStatement(query);
-			pStmt.setString(1, user_id);
+			pStmt.setInt(1, time);
+			pStmt.setString(2, user_id);
 
 			rs = pStmt.executeQuery();
 			System.out.println("updateUserRemainTime 수행 완료 ");

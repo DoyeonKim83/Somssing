@@ -7,9 +7,9 @@ pageEncoding="UTF-8"%>
    <title>matching board</title>
    <script>
    function writePost() {
-		f.action = "matchingWriting.jsp";
-		f.submit();
-	}
+      f.action = "matchingWriting.jsp";
+      f.submit();
+   }
    </script>
    <style>
       table,th,td{
@@ -18,13 +18,13 @@ pageEncoding="UTF-8"%>
          
       }
       td {
-      	height:25px;
-      	text-align : center;
+         height:25px;
+         text-align : center;
       }
       th {
-      	background-color : #ffdbe4;
-      	height : 30px;
-      	text-style:bold;
+         background-color : #ffdbe4;
+         height : 30px;
+         text-style:bold;
       }
       table{
          width: 90%
@@ -34,8 +34,8 @@ pageEncoding="UTF-8"%>
          }
       
       #writeBtn {
-      	 width : 150px;
-		 height : 30px;
+          width : 150px;
+       height : 30px;
          border-radius : 30px; 
          border : 1px solid #ab2948; 
          background-color : #FFFFFF;
@@ -45,11 +45,11 @@ pageEncoding="UTF-8"%>
       }
       
       #post_title {
-      	border : 0px;
-      	background-color : white;
-      	color:black;
-      	font-size : 14px;
-      	
+         border : 0px;
+         background-color : white;
+         color:black;
+         font-size : 14px;
+         
       }
       
       
@@ -57,15 +57,15 @@ pageEncoding="UTF-8"%>
 </head>
 <body>
 <div align = "center">
-	<br><br>
-	
-	<form name="f" method="GET" action="<c:url value='/matching/checkPost'/>">   
-	<h3>매칭 게시판</h3> 	
+   <br><br>
+   
+   <form name="f" method="GET" action="<c:url value='/matching/checkPost'/>">   
+   <h3>매칭 게시판</h3>    
    <input type="button" value = "게시글 작성" id="writeBtn" onClick="location.href='<c:url value='/matching/writeForm' />'"> <br><br>
-	
-	<table align="center">
-    	<tr>
-        	<th style="width:150px;">번호</th>
+   
+   <table align="center">
+       <tr>
+           <th style="width:150px;">번호</th>
             <th>제목</th>
             <th style="width:200px;">작성자</th>
             <th style="width:200px;">날짜</th>
@@ -73,19 +73,19 @@ pageEncoding="UTF-8"%>
          <tr>
          <c:forEach var="post" items="${comList}">
          <tr>
-         	<td style="width:150px;"> ${post.comm_id} </td>
-         	<!-- 
-         	<td style="width:300px;"> <input type="button" value = "${post.title }" id="post_title" 
-         			onClick="location.href='<c:url value='/matching/checkPost' />'"> </td>
-         	<td> -->
-         	
-         	<td style="width:300px;"> <a href="checkPost?user_id=${post.user_id}&comm_id=${post.comm_id}"> ${post.title } </a></td>
-         	<td style="width:200px;"> ${post.user_id } </td>
-         	<td style="width:200px;"> ${post.comm_time } </td>
+            <td style="width:150px;"> ${post.comm_id} </td>
+            <!-- 
+            <td style="width:300px;"> <input type="button" value = "${post.title }" id="post_title" 
+                  onClick="location.href='<c:url value='/matching/checkPost' />'"> </td>
+            <td> -->
+            
+            <td style="width:300px;"> <a href="checkPost?user_id=${post.user_id}&comm_id=${post.comm_id}"> ${post.title } </a></td>
+            <td style="width:200px;"> ${post.user_id } </td>
+            <td style="width:200px;"> ${post.comm_time } </td>
          </tr>
          </c:forEach>
    </table>
-	
+   
 </form>
 </div>
 </body>

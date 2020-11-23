@@ -8,6 +8,16 @@
 <meta charset="UTF-8">
 <title>고장 및 분실 신고 접수 선택</title>
 </head>
+<style>
+#searchBtn {
+				width : 250px;
+				height : 35px;
+				border : 1px solid  #ab2948;
+				background-color :  #ab2948;
+				color : #FFFFFF;
+				border-radius : 30px;
+			}
+</style>
 <body>
 
 <div align="center">
