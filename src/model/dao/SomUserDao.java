@@ -201,6 +201,7 @@ public class SomUserDao {
 						rs.getString("phone"), rs.getString("addr"), rs.getDate("birth"), rs.getString("gender"),
 						rs.getString("grade"), rs.getInt("remain_time"), rs.getInt("numofid"));
 				
+				System.out.println(user.getRent_time());
 				return user;
 			}
 		} catch (SQLException ex) {

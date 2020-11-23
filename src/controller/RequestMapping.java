@@ -19,6 +19,8 @@ public class RequestMapping {
         mappings.put("/", new ForwardController("index.jsp"));
         mappings.put("/main", new ForwardController("/MainPage.jsp"));
         
+        mappings.put("/menu", new ForwardController("/MenuPage.jsp"));
+       
         //login, register
         mappings.put("/user/loginForm", new ForwardController("/user/loginForm.jsp"));
         mappings.put("/user/login", new LoginController());
@@ -37,7 +39,18 @@ public class RequestMapping {
         mappings.put("/search/rentalOffice", new ForwardController("/RentalOffice/Search.jsp"));
         mappings.put("/search/rentalOffice/ByArea", new SearchRentalOfficeByAreaController());
         
+     // ticket 
+        mappings.put("/ticket/buyForm", new ForwardController("/ticket/ticketBuy.jsp"));
+        mappings.put("/ticket/buy", new TicketBuyController());
         
+        //  matching
+        mappings.put("/matching/list", new MatchingListController());
+        mappings.put("/matching/ckeckPost", new MatchingPostCheckController());
+        mappings.put("/matching/update", new MatchingUpdatePostController());
+        mappings.put("/matching/updateForm", new ForwardController("/matching/matchingUpdatePost.jsp"));
+        mappings.put("/matching/write", new MatchingWritingController());
+        mappings.put("/matching/delete", new MatchingDeletePostController());
+
         mappings.put("/recommendation", new ForwardController("/recommendation/search.jsp"));
         mappings.put("/recommendation/result", new RouteResultController());
         
@@ -46,7 +59,7 @@ public class RequestMapping {
         
     }
 
-    public Controller findController(String uri) {	
+    public Controller findController(String uri) {   
         return mappings.get(uri);
     }
 }
