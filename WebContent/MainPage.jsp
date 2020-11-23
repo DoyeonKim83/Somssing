@@ -28,11 +28,16 @@
 		<div style="border: 1px solid white;" align="center">
 			<div align="center" style="background-color: #f0b3c1; border-radius: 2em;">
 				<h4>My Bike</h4><br>
+				<c:if test = "${ user ne null }" >
 					${user.userName } 님 환영합니다!
 					내사진동그라미 형태로 뻔한 프로필<br>
 					이용권 시간 : ${user.remain_time} 시간<br><br>
 					사용중인 자전거 : 일련번호 1031 <br>
 					남은시간 : 결제시간+이용시간-현재시간*** <br>
+				</c:if>
+				<c:if test = "${user eq null }" >
+					환영합니다! <br>로그인 해주십시오
+				</c:if>
 			</div>
 		</div>
 		<br><br>
