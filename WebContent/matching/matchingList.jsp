@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,12 +34,6 @@ pageEncoding="UTF-8"%>
          margin-right:200px;         
       }
       
-      #post_check {
-      	border : 0px;
-      	color : white;
-      	
-      }
-      
       
    </style>
 </head>
@@ -50,7 +43,7 @@ pageEncoding="UTF-8"%>
 	
 	<form name="f" method="POST" action="<c:url value='/matching/checkPost'/>">   
 	<h3>매칭 게시판</h3> 	
-   <input type="button" value = "게시글 작성" id="writeBtn" onClick="location.href='<c:url value='/matching/write' />'"> <br><br>
+   <input type="button" value="게시글 작성" id="writeBtn" onClick="location.href='<c:url value='/matching/write' />'"> <br><br>
 	
 	<table align="center">
     	<tr>
@@ -64,8 +57,6 @@ pageEncoding="UTF-8"%>
          <tr>
          	<td style="width:150px;"> ${post.comm_id} </td>
          	<td> ${post.title } </td>
-         	<td> <input type="button" value = "${post.title }" id="post_title" 
-         			onClick="location.href='<c:url value='/matching/checkPost' />'"> </td>
          	<td style="width:200px;"> ${post.user_id } </td>
          	<td style="width:200px;"> ${post.comm_time } </td>
          </tr>

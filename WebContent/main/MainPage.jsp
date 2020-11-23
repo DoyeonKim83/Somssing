@@ -37,7 +37,7 @@
 		<br><br>
 		<div style="width:100%; height:80%; border: 1px solid white;">
 			<div align="right" style="height:7%">
-					<form action="RentalOfficeSearch.jsp" name="search" action="" method="post">
+					<form action="<c:url value='/search/rentalOffice' />" name="search" action="" method="post">
 					대여소 검색&nbsp;&nbsp;<input type="text" >&nbsp;&nbsp;<input type="submit" value="검색" style="background-color :  #ab2948;border-radius : 30px; color : #FFFFFF;
 					"/>
 				</form>

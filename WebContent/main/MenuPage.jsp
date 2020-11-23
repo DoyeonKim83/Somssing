@@ -38,7 +38,7 @@
 <body>
 <div style="padding:20px 30px 10px 30px">
 	<div align="left">
-			<a href="MainPage.jsp"><img src="back.png" width="35" height="30"></a>
+			<a href="<c:url value='/main' />"><img src="../images/back.png" width="35" height="30"></a>
 		</div>
 		
 	<div align="center" style="padding:100px 30px 100px 30px;">

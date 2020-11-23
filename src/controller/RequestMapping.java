@@ -8,9 +8,12 @@ import org.slf4j.LoggerFactory;
 import controller.user.*;
 import controller.matching.*;
 import controller.menu.MenuController;
+import controller.menu.ViewUserBikeController;
 import controller.rentaloffice.SearchRentalOfficeByAreaController;
 import controller.rentaloffice.SearchRentalOfficeByIdController;
 import controller.rentaloffice.SearchRentalOfficeByNameController;
+import controller.report.ReportBikeBrokenController;
+import controller.report.ReportBikeLostController;
 import controller.route.*;
 
 public class RequestMapping {
@@ -22,6 +25,8 @@ public class RequestMapping {
         mappings.put("/", new ForwardController("index.jsp"));
         mappings.put("/main", new ForwardController("/main/MainPage.jsp"));
         mappings.put("/menu", new MenuController());
+        mappings.put("/mybike", new ViewUserBikeController());
+        
         
         //login, register
         mappings.put("/user/loginForm", new ForwardController("/user/loginForm.jsp"));
@@ -38,10 +43,15 @@ public class RequestMapping {
         mappings.put("/user/grade", new ForwardController("/user/grade.jsp"));
         
         //search
+
         mappings.put("/search/rentalOffice", new ForwardController("/RentalOffice/Search.jsp"));
         mappings.put("/search/rentalOffice/ByArea", new SearchRentalOfficeByAreaController());
         mappings.put("/search/rentalOffice/ById", new SearchRentalOfficeByIdController());
         mappings.put("/search/rentalOffice/ByName", new SearchRentalOfficeByNameController());
+        
+        mappings.put("/report/choice", new ForwardController("/MenuPage.jsp"));
+        mappings.put("/report/choice/broken", new ReportBikeBrokenController());
+        mappings.put("/report/choice/lost", new  ReportBikeLostController());
         
      // ticket 
         mappings.put("/ticket/buyForm", new ForwardController("/ticket/ticketBuy.jsp"));

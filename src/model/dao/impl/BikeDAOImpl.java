@@ -171,12 +171,14 @@ public class BikeDAOImpl implements BikeDao {
 	}
 
 	// 유저아이디로 이용중인 자전거 정보와 시간 찾기
-	public BikeTime getProfByUserId(String user_id) {
+	public BikeTime getMyBikeByUserId(String user_id) {
 		Connection conn = null;
 		PreparedStatement pStmt = null; // PreparedStatment 참조 변수 생성
 		ResultSet rs = null;
 
-		String query = "SELECT bike_id, remain_time " + "FROM SOM_USER u, RENT r " + "WHERE u.user_id = r.user_id = ? ";
+		String query = "SELECT bike_id, remain_time " + 
+		"FROM SOM_USER u, RENT r " 
+				+ "WHERE u.user_id = r.user_id = ?";
 
 		try {
 			conn = getConnection();

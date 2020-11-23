@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 <title>게시글 확인</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -46,7 +45,7 @@ pageEncoding="UTF-8"%>
 
 <body>
 
-<form name="f" method="POST" accept-charset="UTF-8" > 
+<form name="f" method="POST" action="<c:url value='/matching/updatePost'/>"> 
 	
 	<div class="form-group" style = "font-size:12pt; padding-left:30px;">
 	
@@ -59,7 +58,7 @@ pageEncoding="UTF-8"%>
     <div class="form-group" style = "font-size:12pt; padding-left:30px;">
 	
 		<label for="user" align="center">작성자
-			<input type = "button" value = "쪽지 보내기"  id = "communi_btn" onClick="location.href='<c:url value='/message/send'/>'"> 
+			<input type = "button" value = "쪽지 보내기" id = "communi_btn" onClick="location.href='<c:url value='/message/send'/>'"> 
 		</label>
     	<p style = "font-size:12pt;"> ${com.user_id} 성지운</p> 
     	<input type="hidden" name="user_id" value= "${com.user_id}">
@@ -78,7 +77,8 @@ pageEncoding="UTF-8"%>
    		<input type="hidden" name="content" value= "${com.content}">
    		
  	</div>
- 	<input type = "button" value = "게시글 수정" id = "update_btn" style = "margin-left:30px;" onClick="location.href='<c:url value='/matching/updateForm' />'">
+ 	<input type = "button" value = "게시글 수정" id = "update_btn" style = "margin-left:30px;" onClick="location.href='<c:url value='/main' />'">
+ 
  	<input type = "button" value = "게시글 목록" id = "golist_btn" style = "margin-left:30px;" onClick="location.href='<c:url value='/matching/list' />'">
 	
 </form>
