@@ -47,7 +47,7 @@ public class UserManager {
 	public boolean login(String userId, String password) throws SQLException, UserNotFoundException, PasswordMismatchException 
 	{
 		SomUser user = findUser(userId);
-
+		System.out.println("login manager : 1");
 		if (!user.matchPassword(password)) {
 			throw new PasswordMismatchException("비밀번호가 일치하지 않습니다");
 		}

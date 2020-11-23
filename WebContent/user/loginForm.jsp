@@ -12,9 +12,9 @@
 		}
 		
 		function login() {
-			if ( f.userId.value == "" ) {
+			if ( f.user_id.value == "" ) {
 				alert("사용자 아이디를 입력하십시요.");
-				f.userId.focus();
+				f.user_id.focus();
 				return false;
 			} 
 			if ( f.password.value == "" ) {
@@ -60,7 +60,7 @@
 		</head> 
 		 <body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0 marginwidth=0 marginheight=0>
 		 <div align = "center">
-		 <form name="f" accept-charset="UTF-8" method="POST" action="<c:url value='/user/login'/>"> 
+		 <form name="f" accept-charset="UTF-8" method="POST" action="<c:url value='/user/login'/>" > 
 		 
 			 
 		   <h3><br>로그인</h3>
@@ -69,7 +69,7 @@
 				 <tr> <td style="height : 2; "></td> </tr>
 				 <tr> <td > <input type = "text" placeholder = " 비밀번호" name = "password" id = "loginpw"> </td> </tr>
 				 <tr> <td style="height : 12; "></td> </tr>
-				 <tr> <td align = "center"> <input type = "button" value = "로그인" id = "loginbtn" onClick = "login()"> </td> </tr>
+				 <tr> <td align = "center"> <input type = "submit" value = "로그인" id = "loginbtn"> </td> </tr>
 				 <tr> <td style="height : 2; "></td> </tr> <!-- onClick="location.href='<c:url value='/user/registerForm' />'"> -->
 				 <tr> <td align = "center"> <input type = "button" value = "회원가입" id = "createuserbtn" onClick="userCreate()"> </td> </tr>
 		

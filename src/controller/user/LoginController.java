@@ -14,12 +14,13 @@ public class LoginController implements Controller {
 		String password = request.getParameter("password");
 		
 		try {
-			
+			System.out.println("login controller : 1");
 			UserManager.getInstance().login(user_id , password);
 			
-	
+			System.out.println("login controller : 2");
 			HttpSession session = request.getSession();
 			session.setAttribute("user_id", user_id);
+			System.out.println("login controller : 3");
 			return "/MainPage.jsp";
 		} catch (Exception e) {
 
