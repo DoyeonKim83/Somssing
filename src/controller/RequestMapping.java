@@ -7,7 +7,10 @@ import org.slf4j.LoggerFactory;
 
 import controller.user.*;
 import controller.matching.*;
+import controller.menu.MenuController;
 import controller.rentaloffice.SearchRentalOfficeByAreaController;
+import controller.rentaloffice.SearchRentalOfficeByIdController;
+import controller.rentaloffice.SearchRentalOfficeByNameController;
 import controller.route.*;
 
 public class RequestMapping {
@@ -17,10 +20,9 @@ public class RequestMapping {
 
     public void initMapping() {
         mappings.put("/", new ForwardController("index.jsp"));
-        mappings.put("/main", new ForwardController("/MainPage.jsp"));
+        mappings.put("/main", new ForwardController("/main/MainPage.jsp"));
+        mappings.put("/menu", new MenuController());
         
-        mappings.put("/menu", new ForwardController("/MenuPage.jsp"));
-       
         //login, register
         mappings.put("/user/loginForm", new ForwardController("/user/loginForm.jsp"));
         mappings.put("/user/login", new LoginController());
@@ -38,10 +40,12 @@ public class RequestMapping {
         //search
         mappings.put("/search/rentalOffice", new ForwardController("/RentalOffice/Search.jsp"));
         mappings.put("/search/rentalOffice/ByArea", new SearchRentalOfficeByAreaController());
+        mappings.put("/search/rentalOffice/ById", new SearchRentalOfficeByIdController());
+        mappings.put("/search/rentalOffice/ByName", new SearchRentalOfficeByNameController());
         
      // ticket 
         mappings.put("/ticket/buyForm", new ForwardController("/ticket/ticketBuy.jsp"));
-        mappings.put("/ticket/buy", new TicketBuyController());
+        //mappings.put("/ticket/buy", new TicketBuyController());
         
         //  matching
         mappings.put("/matching/list", new MatchingListController());

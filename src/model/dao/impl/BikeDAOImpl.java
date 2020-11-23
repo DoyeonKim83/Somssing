@@ -113,7 +113,7 @@ public class BikeDAOImpl implements BikeDao {
 
 		RentalOfficeDao RentOffDAO = factory.getRentalOfficeDAO();
 		RentalOffice RentOffDTO = RentOffDAO.getRentalOfficeById(bike.getRental_id());
-		String Rental_id = RentOffDTO.getRental_id();
+		String Rental_id = RentOffDTO.getRentalOffice_id();
 		if (Rental_id == null) {
 			System.out.println("해당 Rent Office가 없습니다." + bike.getRental_id());
 			return 0;

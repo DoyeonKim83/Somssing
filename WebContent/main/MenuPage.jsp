@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,16 +49,16 @@
 	<div align="center">
 		<table align="center" border="0" width="70%" height="500" style="table-layout: fixed; border-spacing:20px;">
 			<tr>
-			    <td><div class="menu">마이페이지 </div></td>
-			    <td><div class="menu">대여정보</div></td>
+			    <td><a href="<c:url value='/user/view?command=main' />"><div class="menu">마이페이지 </div></a></td>
+			    <td><a href="<c:url value='/' />"><div class="menu">대여정보</div></a></td>
 			</tr>
 			<tr>
-			    <td><div class="menu">이용권결제</div></td>
-			    <td><div class="menu">매칭게시판</div></td>
+			    <td><a href="<c:url value='/ticket/buy/form' />"><div class="menu">이용권결제</div></a></td>
+			    <td><a href="<c:url value='/' />"><div class="menu">매칭게시판</div></a></td>
 			</tr>
 			<tr>
-			    <td><div class="menu">추천코스</div></td>
-			    <td><div class="menu"><a >고장/분실 신고</div></td>
+			    <td><a href="<c:url value='/recommendation' />"><div class="menu">추천코스</div></a></td>
+			    <td><a href="<c:url value='/report' />"><div class="menu">고장/분실 신고</div></a></td>
 			</tr>
 		 </table>
 	 </div>

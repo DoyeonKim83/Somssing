@@ -2,8 +2,8 @@ package model;
 
 public class RentalOffice {
 
-	private String rental_id;
-	private String rental_name;
+	private String rentalOffice_id;
+	private String rentalOffice_name;
 	private int latitude;
 	private int longitude;
 	private String area;
@@ -17,38 +17,38 @@ public class RentalOffice {
 		this.longitude = longitude;
 	}
 	
-	public RentalOffice(String rental_id, String rental_name, int latitude, int longitude) {
+	public RentalOffice(String rentalOffice_id, String rentalOffice_name, int latitude, int longitude) {
 		super();
-		this.rental_id = rental_id;
-		this.rental_name = rental_name;
+		this.rentalOffice_id = rentalOffice_id;
+		this.rentalOffice_name = rentalOffice_name;
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
 	
 
-	public RentalOffice(String rental_id, String rental_name, int latitude, int longitude, String area) {
+	public RentalOffice(String rentalOffice_id, String rentalOffice_name, int latitude, int longitude, String area) {
 		super();
-		this.rental_id = rental_id;
-		this.rental_name = rental_name;
+		this.rentalOffice_id = rentalOffice_id;
+		this.rentalOffice_name = rentalOffice_name;
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.area = area;
 	}
 
-	public String getRental_id() {
-		return rental_id;
+	public String getRentalOffice_id() {
+		return rentalOffice_id;
 	}
 
-	public void setRental_id(String rental_id) {
-		this.rental_id = rental_id;
+	public void setRentalOffice_id(String rental_id) {
+		this.rentalOffice_id = rental_id;
 	}
 
-	public String getRental_name() {
-		return rental_name;
+	public String getRentalOffice_name() {
+		return rentalOffice_name;
 	}
 
-	public void setRental_name(String rental_name) {
-		this.rental_name = rental_name;
+	public void setRentalOffice_name(String rental_name) {
+		this.rentalOffice_name = rental_name;
 	}
 
 	public int getLatitude() {
