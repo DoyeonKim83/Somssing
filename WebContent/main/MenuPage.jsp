@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-      <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,17 +15,6 @@
 }
 
  .menu { 
- text-align:center;
- background-color:white;  
- border: 3px solid #ab2948; 
- padding-bottom: 50px;
- padding-right:150px;
- padding-left:150px;
- padding-top:50px;
- height:100px;
- }
- 
- #btn {
  text-align:center;
  background-color:white;  
  border: 3px solid #ab2948; 
@@ -56,7 +44,7 @@
 		<div class="aboutme" style="height:250px; width:70%">
 		<img src="">간단한회원정보(사진, 안녕하세요 00님!, 뱃지)와 로그아웃버튼 만들기</div>
 	</div>
-	<form name="f" method="GET" >
+
 	<div align="center">
 		<table align="center" border="0" width="70%" height="500" style="table-layout: fixed; border-spacing:20px;">
 			<tr>
@@ -64,18 +52,15 @@
 			    <td><div class="menu">대여정보</div></td>
 			</tr>
 			<tr>
-			    <!-- <td><div class="menu">이용권결제</div></td> -->
-			    <td><input type = "button" value = "이용권결제" id = "btn" onclick="location.href='<c:url value='/ticket/buyForm'/>'"> </td>
+			    <td><div class="menu">이용권결제</div></td>
 			    <td><div class="menu">매칭게시판</div></td>
-			    <td><input type = "button" value = "메칭게시판" id = "btn" onclick="location.href='<c:url value='/matching/list'/>'"> </td>
 			</tr>
 			<tr>
 			    <td><div class="menu">추천코스</div></td>
-			    <td><div class="menu">고장/분실 신고</div></td>
+			    <td><div class="menu"><a >고장/분실 신고</div></td>
 			</tr>
 		 </table>
 	 </div>
-	 </form>
  </div>
 
 

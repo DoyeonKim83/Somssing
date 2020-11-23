@@ -29,7 +29,7 @@ public class LoginController implements Controller {
 			request.setAttribute("user", user);
 			
 			System.out.println("login controller : 3");
-			return "/MenuPage.jsp";
+			return "/main/MenuPage.jsp";
 		} catch (Exception e) {
 			System.out.println("login controller error!");
 			request.setAttribute ("loginFailed", true);

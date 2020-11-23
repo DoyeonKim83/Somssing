@@ -43,7 +43,7 @@ function userList(targetUri) {
 		  <tr height="35">
 			<td width="150" bgcolor="f0b3c1" align="center" height="35" style="padding-left: 10; padding-right : 10;">이름</td>
 			<td width="250" style="padding-left: 10; padding-right : 10;">
-				<input type="text" style="width: 250" name="name">
+				<input type="text" style="width: 250" name="username">
 			</td>
 		  </tr>
 		  <tr height="35">
@@ -61,7 +61,7 @@ function userList(targetUri) {
 		  <tr height="35">
 			<td width="150" bgcolor="f0b3c1" align="center" height="35" style="padding-left: 10; padding-right : 10;">지역</td>
 			<td width="250" style="padding-left: 10; padding-right : 10;">
-		 		<input type="text" style="width: 250" name="address">
+		 		<input type="text" style="width: 250" name="addr">
 			</td>
 		  </tr>	
 		  <tr height="35">
@@ -70,13 +70,6 @@ function userList(targetUri) {
 		 		<input type="date" style="width: 250" name="birth">
 			</td>
 		  </tr>	
-		  <tr height="35">
-			<td width="150" bgcolor="f0b3c1" align="center" height="35" style="padding-left: 10; padding-right : 10;">성별</td>
-			<td width="250" style="padding-left: 10; padding-right : 10;">
-		 		<input type="radio" name="gender" value="w">여자</input>
-		 		<input type="radio" name="gender" value="m">남자</input>
-			</td>
-		  </tr>	  
 	    </table>
 	    <br>
   <input type="submit" value="수정" id="redButton"> &nbsp;

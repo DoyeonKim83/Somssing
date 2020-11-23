@@ -38,21 +38,21 @@ public class DispatcherServlet extends HttpServlet {
         try {
         	// controller를 통해 request 처리 후, 이동할 uri를 반환 받음
             String uri = controller.execute(request, response);
-            System.out.println("dispatcherServlet 1");
+            System.out.println("dispatcherServlet error1");
             if (uri == null) return;	// Ajax request 처리 완료
-            System.out.println("dispatcherServlet 2");
+            System.out.println("dispatcherServlet error2");
  			// 반환된 uri에 따라 forwarding 또는 redirection 여부를 결정하고 이동 
             if (uri.startsWith("redirect:")) {	
             	// redirection 지시
             	String targetUri = contextPath + uri.substring("redirect:".length());
             	response.sendRedirect(targetUri);	// redirect to url   
-            	System.out.println("dispatcherServlet 3");
+            	System.out.println("dispatcherServlet error3");
             }
             else {
             	// forwarding 수행
             	RequestDispatcher rd = request.getRequestDispatcher(uri);
                 rd.forward(request, response);		// forward to the view page
-                System.out.println("dispatcherServlet 4");
+                System.out.println("dispatcherServlet error4");
             }                   
         } catch (Exception e) {
             logger.error("Exception : {}", e);

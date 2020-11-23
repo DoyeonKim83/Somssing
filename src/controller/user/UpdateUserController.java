@@ -39,19 +39,16 @@ public class UpdateUserController implements Controller {
     	
     	// POST request (회원정보가 parameter로 전송됨)
     	SomUser updateUser = new SomUser(
-    		request.getSession().getId(),
+    		UserSessionUtils.getLoginUserId(request.getSession()),
     		request.getParameter("password"),
     		request.getParameter("username"),
     		request.getParameter("email"),
     		request.getParameter("phone"),
     		request.getParameter("addr"),
-    		date,
-    		request.getParameter("gender"));
-
-    	log.debug("Update User : {}", updateUser);
+    		date);
 
 		UserManager manager = UserManager.getInstance();
 		manager.update(updateUser);			
-        return "redirect:/user/detail/view";			
+        return "redirect:/user/detail/view";		
     }
 }

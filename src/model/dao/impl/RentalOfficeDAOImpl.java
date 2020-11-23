@@ -11,7 +11,7 @@ import java.util.List;
 import model.dao.*;
 import model.*;
 
-public class RentalOfficeDAOImpl implements SearchRentalOfficeDao {
+public class RentalOfficeDAOImpl implements RentalOfficeDao {
 	
 	public RentalOfficeDAOImpl() {
 		try {
@@ -43,9 +43,9 @@ public class RentalOfficeDAOImpl implements SearchRentalOfficeDao {
 		PreparedStatement pStmt = null;	
 		ResultSet rs = null;
 		
-		String query = "SELECT area, rental_id, remain_name, latitude, longitude "
-					+ "FROM RENT "
-					+ "WHERE area = ? ";
+		String query = "SELECT area, rental_name, rental_id, latitude, longitude "
+					+ "FROM rentaloffice "
+					+ "WHERE area = ?";
 		
 		try {
 			conn = getConnection();
@@ -85,15 +85,15 @@ public class RentalOfficeDAOImpl implements SearchRentalOfficeDao {
 		return null;
 	}				
 	
-	public RentalOffice getRentalById(String rental_id) {
+	public RentalOffice getRentalOfficeById(String rental_id) {
 		
 		Connection conn = null;
 		PreparedStatement pStmt = null;			
 		ResultSet rs = null;
 		
-		String query = "SELECT area, rental_id, remain_name, latitude, longitude "
-					+ "FROM RENT "
-					+ "WHERE rental_id = ? ";
+		String query = "SELECT area, rental_name, rental_id, latitude, longitude "
+					+ "FROM rentaloffice "
+					+ "WHERE rental_id = ?";
 		
 		try {
 			conn = getConnection();
@@ -132,14 +132,14 @@ public class RentalOfficeDAOImpl implements SearchRentalOfficeDao {
 		return null;
 	}	
 	
-	public RentalOffice getRentalByName(String rental_name) {
+	public RentalOffice getRentalOfficeByName(String rental_name) {
 		Connection conn = null;
 		PreparedStatement pStmt = null;		
 		ResultSet rs = null;
 		
-		String query = "SELECT area, rental_id, remain_name, latitude, longitude "
-					+ "FROM RENT "
-					+ "WHERE rental_name = ? ";
+		String query = "SELECT area, rental_name, rental_id, latitude, longitude "
+					+ "FROM rentaloffice "
+					+ "WHERE rental_name = ?";
 		
 		try {
 			conn = getConnection();

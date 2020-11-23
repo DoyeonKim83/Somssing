@@ -47,7 +47,7 @@ private JDBCUtil jdbcUtil = null;
 	}
 
 	@Override
-	public Rent getRentByBikeId(String bike_id) {
+	public Rent getRentOfficeByBikeId(String bike_id) {
 		String searchQuery = query + "WHERE RENT.B_ID = ?";
 		Object[] param = new Object[] {bike_id};
 
@@ -75,7 +75,7 @@ private JDBCUtil jdbcUtil = null;
 	}
 
 	@Override
-	public Rent getRentByUserId(String user_id) {
+	public Rent getRentOfficeByUserId(String user_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

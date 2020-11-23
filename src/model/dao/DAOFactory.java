@@ -16,7 +16,7 @@ public class DAOFactory {
 		return new RentDAOImpl();		
 	}
 
-	public SearchRentalOfficeDao getRentalOfficeDAO() {
+	public RentalOfficeDao getRentalOfficeDAO() {
 		return new RentalOfficeDAOImpl();		
 	}
 	

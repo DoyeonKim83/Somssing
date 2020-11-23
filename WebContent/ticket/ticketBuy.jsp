@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
- <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <title>이용권구매</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script>
 
@@ -21,6 +20,9 @@ function selectTime(time) {
 	sum.value = parseInt(t) * 1000;
 }
 
+function BuyClick() {
+	f.submit();
+}
 
 function Increment() {
     var count = document.getElementsByName("ps_num")[0];
@@ -112,7 +114,7 @@ function Increment() {
 <div align = "center">
 <br>
 <!-- write Form  -->
-<form name="f" method="GET" accept-charset="UTF-8" action="<c:url value='/ticket/buy' />">
+<form name="f" method="GET" action="<c:url value='/ticket/buy'/>">
        
 	<h3>이용권 구매 안내</h3> 
 	
@@ -153,8 +155,7 @@ function Increment() {
 	<tr> <td style="height : 20; "></td> </tr>
 	
 	<tr> <td align="center"> 
-		
-		<input type = "submit" value = "결제 하기" id = "buy_btn" > </td> </tr>	
+		<input type = "button" value = "결제 하기" id = "buy_btn" onClick='BuyClick()'> </td> </tr>	
 	<tr> <td align="center" style="font-size:10px;"> 
 		<input type="radio" name="ticket_agree" value="ok"> 
 			이용권 구매 약관에 동의하며, 결제를 진행합니다. </td> </tr>	

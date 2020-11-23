@@ -111,8 +111,8 @@ public class BikeDAOImpl implements BikeDao {
 
 		DAOFactory factory = new DAOFactory();
 
-		SearchRentalOfficeDao RentOffDAO = factory.getRentalOfficeDAO();
-		RentalOffice RentOffDTO = RentOffDAO.getRentalById(bike.getRental_id());
+		RentalOfficeDao RentOffDAO = factory.getRentalOfficeDAO();
+		RentalOffice RentOffDTO = RentOffDAO.getRentalOfficeById(bike.getRental_id());
 		String Rental_id = RentOffDTO.getRental_id();
 		if (Rental_id == null) {
 			System.out.println("해당 Rent Office가 없습니다." + bike.getRental_id());
@@ -120,7 +120,7 @@ public class BikeDAOImpl implements BikeDao {
 		}
 
 		RentDao rentDAO = factory.getRentDAO();
-		Rent rentDTO = rentDAO.getRentByBikeId(bike.getRental_name());
+		Rent rentDTO = rentDAO.getRentOfficeByBikeId(bike.getRental_name());
 		String Rental_name = rentDTO.getBike_id();
 		if (Rental_name == null) {
 			System.out.println("해당 Rent Office가 없습니다.");

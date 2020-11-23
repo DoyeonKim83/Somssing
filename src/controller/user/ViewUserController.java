@@ -18,13 +18,14 @@ public class ViewUserController implements Controller {
 		UserManager manager = UserManager.getInstance();
 		//String userId = request.getParameter("userId");
 		String userId = UserSessionUtils.getLoginUserId(request.getSession());
+		System.out.println(userId);
 
     	SomUser user = null;
     	user = manager.findUser(userId);	// 사용자 정보 검색
 		
     	request.setAttribute("user", user);		// 사용자 정보 저장
     	if (request.getParameter("command").equals("main"))
-    		return "/user/main.jsp";				
+    		return "/user/main.jsp";		
     	else {
     		return "/user/delete.jsp";
     	}

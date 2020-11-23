@@ -60,6 +60,8 @@
 	    <br>
 	    <input type="button" value="수정" id="redButton" onclick="location.href='<c:url value='/user/update_action' />'"> &nbsp;
 	    <input type="button" value="탈퇴" id="whiteButton" onclick="location.href='<c:url value='/user/view?command=delete' />'"> &nbsp;	
+	    <br><br>
+  		<input type="button" value="프로필 메인으로 이동" id="redButton" onclick="location.href='<c:url value='/user/view?command=main' />'"> &nbsp;	
 	    <!-- 파라미터 -->
  	    <br><br>	
 </div>    

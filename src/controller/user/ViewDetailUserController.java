@@ -17,10 +17,9 @@ public class ViewDetailUserController implements Controller {
     	
 		UserManager manager = UserManager.getInstance();
 		//String userId = request.getParameter("userId");
-		String userId = request.getSession().getId();
+		String userId = UserSessionUtils.getLoginUserId(request.getSession());
 
-    	SomUser user = null;
-    	user = manager.findUser(userId);	// 사용자 정보 검색
+    	SomUser user = manager.findUser(userId);	// 사용자 정보 검색
 		
     	request.setAttribute("user", user);		// 사용자 정보 저장				
 		return "/user/detail.jsp";				// 사용자 보기 화면으로 이동

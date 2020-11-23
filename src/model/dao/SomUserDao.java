@@ -17,7 +17,7 @@ public class SomUserDao {
 		PreparedStatement pStmt = null;
 		ResultSet rs = null;
 
-		String sql = "UPDATE SOM_USER " + "SET password=?, username=?, email=?, phone=?, addr=?, birth=?, gender=? "
+		String sql = "UPDATE SOM_USER " + "SET password=?, username=?, email=?, phone=?, addr=?, birth=? "
 				+ "WHERE user_id=?";
 
 		try {
@@ -32,8 +32,7 @@ public class SomUserDao {
 			pStmt.setString(4, user.getPhone());
 			pStmt.setString(5, user.getAddr());
 			pStmt.setDate(6, new java.sql.Date(user.getBirth().getTime()));
-			pStmt.setString(7, user.getGender());
-			pStmt.setString(8, user.getUser_id());
+			pStmt.setString(7, user.getUser_id());
 
 			int result = pStmt.executeUpdate(); // update 문 실행
 			if (result != 0) {
@@ -363,13 +362,12 @@ public class SomUserDao {
 		PreparedStatement pStmt = null; // PreparedStatment 참조 변수 생성
 		ResultSet rs = null;
 
-		String query = "update SOM_USER" + " set remain_time = remain_time + ? where user_id = ?";
+		String query = "update SOM_USER" + " set remain_time = remain_time " + time + " where user_id = ?";
 
 		try {
 			conn = cm.getConnection();
 			pStmt = conn.prepareStatement(query);
-			pStmt.setInt(1, time);
-			pStmt.setString(2, user_id);
+			pStmt.setString(1, user_id);
 
 			rs = pStmt.executeQuery();
 			System.out.println("updateUserRemainTime 수행 완료 ");

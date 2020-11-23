@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import controller.user.*;
 import controller.matching.*;
+import controller.rentaloffice.SearchRentalOfficeByAreaController;
 import controller.route.*;
 
 public class RequestMapping {
@@ -24,10 +25,6 @@ public class RequestMapping {
         mappings.put("/user/registerForm", new ForwardController("/user/registerForm.jsp"));
         mappings.put("/user/register", new RegisterController());
     
-        //ticket/buy
-        mappings.put("/ticket/buyForm", new ForwardController("/ticket/ticketBuy.jsp"));
-        mappings.put("/ticket/buy", new TicketBuyController());
-        
         
         mappings.put("/user/view", new ViewUserController());
         mappings.put("/user/detail/view", new ViewDetailUserController());
@@ -35,6 +32,10 @@ public class RequestMapping {
         mappings.put("/user/delete", new DeleteUserController());
         mappings.put("/user/logout", new LogoutController());
         mappings.put("/user/grade", new ForwardController("/user/grade.jsp"));
+        
+        //search
+        mappings.put("/search/rentalOffice", new ForwardController("/RentalOffice/Search.jsp"));
+        mappings.put("/search/rentalOffice/ByArea", new SearchRentalOfficeByAreaController());
         
         
         mappings.put("/recommendation", new ForwardController("/recommendation/search.jsp"));

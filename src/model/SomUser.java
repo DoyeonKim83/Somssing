@@ -50,8 +50,7 @@ public class SomUser {
 	}
 
 
-	public SomUser(String user_id, String password, String userName, String email, String phone, String addr,  Date birth,
-			String gender) {
+	public SomUser(String user_id, String password, String userName, String email, String phone, String addr,  Date birth) {
 		super();
 		this.user_id = user_id;
 		this.password = password;
@@ -60,7 +59,6 @@ public class SomUser {
 		this.phone = phone;
 		this.addr = addr;
 		this.birth = birth;
-		this.gender = gender;
 	}
 
 	public String getUser_id() {
