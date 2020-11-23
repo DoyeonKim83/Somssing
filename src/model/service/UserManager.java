@@ -44,4 +44,28 @@ public class UserManager {
 		
 		return user;
 	}
+	public boolean login(String userId, String password) throws SQLException, UserNotFoundException, PasswordMismatchException 
+	{
+		SomUser user = findUser(userId);
+
+		if (!user.matchPassword(password)) {
+			throw new PasswordMismatchException("비밀번호가 일치하지 않습니다");
+		}
+		return true;
+	}
+	
+	public boolean create(SomUser user) throws SQLException, ExistingUserException {
+		System.out.println("Manager : create!!");
+		if (userDAO.existedUser(user.getUser_id()) == true) {
+			throw new ExistingUserException(user.getUser_id() + "는 존재하는 아이디입니다");
+		}
+		return userDAO.create(user);
+	}
+	
+	public SomUser updateUserRemainTime(String user_id, int time) throws SQLException, UserNotFoundException {
+		//updateUserRemainTime
+		userDAO.updateUserRemainTime(user_id, time);
+		SomUser user = findUser(user_id);
+		return user;
+	}
 }

@@ -34,6 +34,21 @@ public class SomUser {
 		this.remain_time = remain_time;
 		this.rent_time = rent_time;
 	}
+	public SomUser(String user_id, String password, String userName, String email, String phone, String addr,
+			Date birth, String gender, String grade, int remain_time) {
+		
+		this.user_id = user_id;
+		this.password = password;
+		this.userName = userName;
+		this.email = email;
+		this.phone = phone;
+		this.addr = addr;
+		this.birth = birth;
+		this.gender = gender;
+		this.grade = grade;
+		this.remain_time = remain_time;
+	}
+
 
 	public SomUser(String user_id, String password, String userName, String email, String phone, String addr,  Date birth,
 			String gender) {

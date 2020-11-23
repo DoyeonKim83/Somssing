@@ -397,4 +397,47 @@ public class SomUserDao {
 		}
 
 	}
+	public static boolean existedUser(String userId) {
+		
+		Connection conn = null;
+		PreparedStatement pStmt = null;
+		ResultSet rs = null;
+
+		String sql = "SELECT count(*) FROM SOM_USER WHERE user_id=?";
+
+		try {
+			conn = cm.getConnection();
+			pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, userId);
+
+			rs = pStmt.executeQuery(); 
+			if (rs.next()) { 
+				int count = rs.getInt(1);
+				return (count == 1 ? true : false);
+			}
+			
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		} finally { 
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			if (pStmt != null)
+				try {
+					pStmt.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+		}
+		return false;
+	}
 }
