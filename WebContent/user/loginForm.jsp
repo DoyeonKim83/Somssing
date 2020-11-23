@@ -70,7 +70,7 @@
 				 <tr> <td style="height : 12; "></td> </tr>
 				 <tr> <td align = "center"> <input type = "submit" value = "로그인" id = "loginbtn"> </td> </tr>
 				 <tr> <td style="height : 2; "></td> </tr> <!-- onClick="location.href='<c:url value='/user/registerForm' />'"> -->
-				 <tr> <td align = "center"> <input type = "button" value = "회원가입" id = "createuserbtn" onClick="userCreate()"> </td> </tr>
+				 <tr> <td align = "center"> <input type = "button" value = "회원가입" id = "createuserbtn" onClick="location.href='<c:url value='/user/registerForm' />'"> </td> </tr>
 		
 			 </table>
 		 </div> 

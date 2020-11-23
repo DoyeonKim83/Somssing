@@ -22,10 +22,10 @@ public class MatchingWritingController implements Controller {
 			title = request.getParameter("title");
 	    	content = request.getParameter("content");
 	    	
-	    	Community com = new Community(content, title, user_id);
-	    	Community new_com = manager.insertCommunity(com);
+	    	Community old_com = new Community(content, title, user_id);
+	    	Community com = manager.insertCommunity(old_com);
 		
-			request.setAttribute("new_com", new_com);					
+			request.setAttribute("com", com);					
 			return "/matching/matchingPost.jsp"; 
     	} catch (Exception e) {
     		return "/matchingList.jsp";

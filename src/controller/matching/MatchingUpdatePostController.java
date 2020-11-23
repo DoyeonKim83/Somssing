@@ -17,11 +17,14 @@ public class MatchingUpdatePostController implements Controller {
     	int comm_id;
     	String new_content;
     	String new_title;
+    	System.out.println("update post controller : 0");
     	try {
 	    	comm_id = Integer.parseInt(request.getParameter("comm_id"));
 	    	new_title = request.getParameter("title");
 	    	new_content = request.getParameter("content");
+	    	System.out.println("update post controller : 1");
 	    	Community com = manager.updatePost(comm_id, new_title, new_content);
+	    	System.out.println("update post controller : 2");
 		
 			request.setAttribute("com", com);					
 	

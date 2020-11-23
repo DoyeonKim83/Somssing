@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+   <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <title>이용권구매</title>
@@ -155,7 +156,7 @@ function Increment() {
 	<tr> <td style="height : 20; "></td> </tr>
 	
 	<tr> <td align="center"> 
-		<input type = "button" value = "결제 하기" id = "buy_btn" onClick='BuyClick()'> </td> </tr>	
+		<input type = "submit" value = "결제 하기" id = "buy_btn"> </td> </tr>	
 	<tr> <td align="center" style="font-size:10px;"> 
 		<input type="radio" name="ticket_agree" value="ok"> 
 			이용권 구매 약관에 동의하며, 결제를 진행합니다. </td> </tr>	

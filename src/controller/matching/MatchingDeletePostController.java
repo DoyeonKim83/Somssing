@@ -17,10 +17,14 @@ public class MatchingDeletePostController implements Controller {
   
     	MatchingManager manager = MatchingManager.getInstance();
     	int comm_id;
+    	System.out.println("matching delete controller : 1");
     	try {
 	    	comm_id = Integer.parseInt(request.getParameter("comm_id"));
+	    	System.out.println("matching delete controller : 2");
 	    	boolean result = manager.deletePost(comm_id);
+	    	System.out.println("matching delete controller : 3");
 	    	if (result == true) {
+	    		System.out.println("matching delete controller : 4");
 	    		return "/matching/matchingDeleteSuccess.jsp";
 	    	} else {
 	    		return "/matching/matchingList.jsp";

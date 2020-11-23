@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +16,15 @@ pageEncoding="UTF-8"%>
          border: 1px solid gray;
          border-collapse: collapse;
          
+      }
+      td {
+      	height:25px;
+      	text-align : center;
+      }
+      th {
+      	background-color : #ffdbe4;
+      	height : 30px;
+      	text-style:bold;
       }
       table{
          width: 90%
@@ -34,6 +44,14 @@ pageEncoding="UTF-8"%>
          margin-right:200px;         
       }
       
+      #post_title {
+      	border : 0px;
+      	background-color : white;
+      	color:black;
+      	font-size : 14px;
+      	
+      }
+      
       
    </style>
 </head>
@@ -41,9 +59,9 @@ pageEncoding="UTF-8"%>
 <div align = "center">
 	<br><br>
 	
-	<form name="f" method="POST" action="<c:url value='/matching/checkPost'/>">   
+	<form name="f" method="GET" action="<c:url value='/matching/checkPost'/>">   
 	<h3>매칭 게시판</h3> 	
-   <input type="button" value="게시글 작성" id="writeBtn" onClick="location.href='<c:url value='/matching/write' />'"> <br><br>
+   <input type="button" value = "게시글 작성" id="writeBtn" onClick="location.href='<c:url value='/matching/writeForm' />'"> <br><br>
 	
 	<table align="center">
     	<tr>
@@ -56,13 +74,18 @@ pageEncoding="UTF-8"%>
          <c:forEach var="post" items="${comList}">
          <tr>
          	<td style="width:150px;"> ${post.comm_id} </td>
-         	<td> ${post.title } </td>
+         	<!-- 
+         	<td style="width:300px;"> <input type="button" value = "${post.title }" id="post_title" 
+         			onClick="location.href='<c:url value='/matching/checkPost' />'"> </td>
+         	<td> -->
+         	
+         	<td style="width:300px;"> <a href="checkPost?user_id=${post.user_id}&comm_id=${post.comm_id}"> ${post.title } </a></td>
          	<td style="width:200px;"> ${post.user_id } </td>
          	<td style="width:200px;"> ${post.comm_time } </td>
          </tr>
          </c:forEach>
    </table>
-	<input type="hidden" name="user_id" value="${user_id}">
+	
 </form>
 </div>
 </body>

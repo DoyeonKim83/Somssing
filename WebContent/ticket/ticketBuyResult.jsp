@@ -52,7 +52,7 @@ function gomain() {
 	회원님의 앞으로 이용가능한 시간: <br><text style="font-size:20px; color:red;" >${user.remain_time}</text>
 	</td> </tr> </table>
 	<br><br>
-	<button id = "gomainbtn" onClick="gomain()" >홈으로 이동</button>	
+	<input type = "button" value = "홈으로 이동" id = "gomainbtn" onClick="location.href='<c:url value='/menu' />'">	
 	
 </div>
 

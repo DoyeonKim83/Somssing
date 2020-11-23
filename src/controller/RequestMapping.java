@@ -55,7 +55,7 @@ public class RequestMapping {
         
      // ticket 
         mappings.put("/ticket/buyForm", new ForwardController("/ticket/ticketBuy.jsp"));
-        //mappings.put("/ticket/buy", new TicketBuyController());
+        mappings.put("/ticket/buy", new TicketBuyController());
         
         //  matching
         mappings.put("/matching/list", new MatchingListController());
