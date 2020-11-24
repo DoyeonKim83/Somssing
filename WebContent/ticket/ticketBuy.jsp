@@ -152,7 +152,7 @@ function Increment() {
 	
 	<tr> <td align="center" id="td_name">결제 수단</td> </tr>
 	<tr> <td align="center" style="font-size:13px;" > 
-		<input type="radio" name="pay_method" value="1" required = "required">신용카드  
+		<input type="radio" name="pay_method" value="1" required >신용카드  
 		<input type="radio" name="pay_method" value="2" >휴대폰결제  
 		<input type="radio" name="pay_method" value="3" >네이버페이<br> </td> </tr>
 	<tr> <td style="height : 20; "></td> </tr>
@@ -160,7 +160,7 @@ function Increment() {
 	<tr> <td align="center"> 
 		<input type = "submit" value = "결제 하기" id = "buy_btn"> </td> </tr>	
 	<tr> <td align="center" style="font-size:10px;"> 
-		<input type="radio" name="ticket_agree" value="ok" required = "required"> 
+		<input type="radio" name="ticket_agree" value="ok" required = "required" > 
 			이용권 구매 약관에 동의하며, 결제를 진행합니다. </td> </tr>	
 	<tr> <td align="center">
 	<input type="button" id="cancel" value="취소" onclick="history.back()">

@@ -77,7 +77,9 @@ pageEncoding="UTF-8"%>
 <body>
 <div align = "center">
    <br><br>
-   
+   <div align="left">
+      <a href="<c:url value='/menu' />"><img src="<c:url value='/images/menuicon.png' />" width="35" height="30" /></a>
+   </div>
    <form name="f" method="GET" action="<c:url value='/matching/checkPost'/>">   
    <h2>매칭 게시판</h2>  
    <input type="button" value = "받은 쪽지함" id="rbtn" onClick="location.href='<c:url value='/message/messageReceive' />'">
