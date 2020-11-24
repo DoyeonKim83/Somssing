@@ -100,12 +100,7 @@ pageEncoding="UTF-8"%>
          <tr>
          <c:forEach var="post" items="${comList}">
          <tr>
-            <td style="width:150px;" id="matchingboard_td"> ${post.comm_id} </td>
-            <!-- 
-            <td style="width:300px;"> <input type="button" value = "${post.title }" id="post_title" 
-                  onClick="location.href='<c:url value='/matching/checkPost' />'"> </td>
-            <td> -->
-            
+            <td style="width:150px;" id="matchingboard_td"> ${post.comm_id} </td>        
             <td style="width:300px;" id="matchingboard_td"> <a href="checkPost?user_id=${post.user_id}&comm_id=${post.comm_id}"> ${post.title } </a></td>
             <td style="width:200px;" id="matchingboard_td"> ${post.user_id } </td>
             <td style="width:200px;" id="matchingboard_td"> ${post.comm_time } </td>

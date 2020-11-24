@@ -46,47 +46,56 @@ pageEncoding="UTF-8"%>
 </style>
 
 <body>
+<div align="center">
 
 <form name="f" method="GET" accept-charset="UTF-8" action="<c:url value='/matching/updateForm' />" > 
-	<div class="form-group" style = "font-size:12pt; padding-left:30px;">
 	
-		<label for="title" align="center">게시글 번호</label>
-    	<p style = "font-size:14pt;"> ${com.comm_id}</p> 
+	
+		<table> <tr> <td class="form-control">
+    	<p style = "font-size:10pt;"> ${com.comm_id}</p> 
     	<input type="hidden" name="comm_id" value= "${com.comm_id}">
-    </div>
+   
+	</td></tr> 
 	
+	<tr> <td class="form-control">
+	<!-- <div class="form-group" style = "font-size:12pt; padding-left:30px;"> -->
 	<div class="form-group" style = "font-size:12pt; padding-left:30px;">
-	
-		<label for="title" align="center">제목</label>
-    	<p style = "font-size:14pt;"> ${com.title}</p> 
+    	${com.title} 
     	<input type="hidden" name="title" value= "${com.title}">
-    </div>
     
-    <div class="form-group" style = "font-size:12pt; padding-left:30px;">
-	
+    </td></tr> 
+    
+    <tr> <td class="form-control">
 		<label for="user" align="center">작성자
 			<input type = "button" value = "쪽지 보내기"  id = "communi_btn" onClick="location.href='<c:url value='/message/send'/>'"> 
 		</label>
-    	<p style = "font-size:14pt;"> ${com.user_id}</p> 
+    	${com.user_id}
     	<input type="hidden" name="user_id" value= "${com.user_id}">
-    </div>
     
-    <div class="form-group" style = "font-size:12pt; padding-left:30px;">
+    </td></tr> 
+    
+    <tr> <td class="form-control">
+   
 	
 		<label for="day" align="center">게시물 날짜 </label>
-    	<p style = "font-size:14pt;"> ${com.comm_time }</p> 
+    	 ${com.comm_time }
     	<input type="hidden" name="comm_time" value= "${com.comm_time}">
-    </div>
     
-    <div class="form-group" style = "font-size:12pt; padding-left:30px;">
+    </td></tr> 
+    
+    <tr> <td class="form-control">
+    
     	<label for="content">내용</label>
-   		<p style = "font-size:13pt;"> ${com.content } </p>
+   		 ${com.content }
    		<input type="hidden" name="content" value= "${com.content}">
    		
- 	</div>
+ 	
+ 	</td></tr> </table>
+ 	
+ 	
  	<c:if test="${user_id eq com.user_id }">
  	<input type = "submit" value = "게시글 수정" id = "update_btn" style = "margin-left:30px;" >
- 	<input type = "button" value = "게시글 삭제" id = "delete_btn" style = "margin-left:30px;" 
+ 	<input type = "button" value = "게시글 삭제" id = "delete_btn" style = "margin-left:5px;" 
  		onClick="location.href='<c:url value='/matching/delete'>
  			<c:param name='comm_id' value='${com.comm_id}'/>
  			</c:url>'">
@@ -95,6 +104,6 @@ pageEncoding="UTF-8"%>
  	<input type = "button" value = "게시글 목록" id = "golist_btn" style = "margin-left:30px;" onClick="location.href='<c:url value='/matching/list' />'">
 	
 </form>
-
+</div>
 </body>
 </html>
