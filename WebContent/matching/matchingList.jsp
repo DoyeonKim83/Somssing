@@ -12,21 +12,21 @@ pageEncoding="UTF-8"%>
    }
    </script>
    <style>
-      table,th,td{
+      #matchingboard,#matchingboard_th, #matchingboard_td{
          border: 1px solid gray;
          border-collapse: collapse;
          
       }
-      td {
+      #matchingboard_td {
          height:25px;
          text-align : center;
       }
-      th {
+       #matchingboard_th {
          background-color : #ffdbe4;
          height : 30px;
          text-style:bold;
       }
-      table{
+      #matchingboard {
          width: 90%
       }
       body{
@@ -34,14 +34,24 @@ pageEncoding="UTF-8"%>
          }
       
       #writeBtn {
-          width : 150px;
-       height : 30px;
+         width : 100px;
+       	 height : 20px;
          border-radius : 30px; 
          border : 1px solid #ab2948; 
          background-color : #FFFFFF;
          color : #ab2948;
-         float: right;
-         margin-right:200px;         
+         
+                  
+      }
+      #gomainBtn {
+         width : 100px;
+       	 height : 20px;
+         border-radius : 30px; 
+         border : 1px solid #ab2948; 
+         background-color : #ab2948;
+         color : #FFFFFF;
+         
+                  
       }
       
       #post_title {
@@ -51,6 +61,17 @@ pageEncoding="UTF-8"%>
          font-size : 14px;
          
       }
+      #matching_guide {
+    	
+    	padding-left: 10; padding-right : 10;
+    	 padding-bottom : 10;
+    	font-size:12px;
+    	text-align : center;
+    	line-height:13px;
+    	height : 50px;
+    	width: 60%
+    	 
+    }
       
       
    </style>
@@ -60,28 +81,34 @@ pageEncoding="UTF-8"%>
    <br><br>
    
    <form name="f" method="GET" action="<c:url value='/matching/checkPost'/>">   
-   <h3>매칭 게시판</h3>    
-   <input type="button" value = "게시글 작성" id="writeBtn" onClick="location.href='<c:url value='/matching/writeForm' />'"> <br><br>
+   <h2>매칭 게시판</h2>    
+   <input type="button" value = "메인으로 이동" id="gomainBtn" onClick="location.href='<c:url value='/main' />'">
+   <input type="button" value = "게시글 작성" id="writeBtn" onClick="location.href='<c:url value='/matching/writeForm' />'"> 
+   <br>
+   <table>	<tr> <td id = "matching_guide">
+	-솜씽이들을 만날 수 있는 매칭 보드입니다. 	<br>
+	-욕설 및 비방글은 <text style="color:#d1150f;" >무통보 삭제 </text>합니다.	<br>
+	</td> </tr> </table>
    
-   <table align="center">
-       <tr>
-           <th style="width:150px;">번호</th>
-            <th>제목</th>
-            <th style="width:200px;">작성자</th>
-            <th style="width:200px;">날짜</th>
+   <table align="center" id="matchingboard">
+       <tr id="matchingboard_tr">
+           <th style="width:150px;" id="matchingboard_th">번호</th>
+            <th id="matchingboard_th">제목</th>
+            <th style="width:200px;" id="matchingboard_th">작성자</th>
+            <th style="width:200px;" id="matchingboard_th">날짜</th>
          </tr>
          <tr>
          <c:forEach var="post" items="${comList}">
          <tr>
-            <td style="width:150px;"> ${post.comm_id} </td>
+            <td style="width:150px;" id="matchingboard_td"> ${post.comm_id} </td>
             <!-- 
             <td style="width:300px;"> <input type="button" value = "${post.title }" id="post_title" 
                   onClick="location.href='<c:url value='/matching/checkPost' />'"> </td>
             <td> -->
             
-            <td style="width:300px;"> <a href="checkPost?user_id=${post.user_id}&comm_id=${post.comm_id}"> ${post.title } </a></td>
-            <td style="width:200px;"> ${post.user_id } </td>
-            <td style="width:200px;"> ${post.comm_time } </td>
+            <td style="width:300px;" id="matchingboard_td"> <a href="checkPost?user_id=${post.user_id}&comm_id=${post.comm_id}"> ${post.title } </a></td>
+            <td style="width:200px;" id="matchingboard_td"> ${post.user_id } </td>
+            <td style="width:200px;" id="matchingboard_td"> ${post.comm_time } </td>
          </tr>
          </c:forEach>
    </table>
