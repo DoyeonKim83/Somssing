@@ -6,6 +6,16 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<link rel=stylesheet href="<c:url value='/css/profile.css' />" type="text/css">
 </head>
+<style>
+      #gomainBtn {
+         width : 300px;
+       	 height : 30px;
+         border-radius : 30px; 
+         border : 1px solid #ab2948; 
+         background-color : #ab2948;
+         color : #FFFFFF;
+      }
+</style>
 <body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0 marginwidth=0 marginheight=0>
 <div align="center">
 <br><br>
@@ -61,6 +71,7 @@
   <br>
 	<input type="button" value="개인 정보 상세 보기" id="redButton" onclick="location.href='<c:url value='/user/detail/view' />'"> &nbsp;
 	<input type="button" value="등급 안내" id="whiteButton" onclick="location.href='<c:url value='/user/grade' />'"> &nbsp;
+ 	<br> <br> <input type="button" value = "메인페이지" id="gomainBtn" onClick="location.href='<c:url value='/main' />'">
  	<br><br>	
  	</div>
 </body>

@@ -42,10 +42,13 @@ pageEncoding="UTF-8"%>
 
 </style>
 <body>
+<div style="padding:20px 80px 10px 80px" align="left">
+      <a href="<c:url value='/menu' />"><img src="<c:url value='/images/menuicon.png' />" width="35" height="30" /></a>
+   </div>
 <div align="center">
 	<h2>이용권 구매가 완료되었습니다.</h2>
 	<br>
-		
+	
 	<table>	<tr> <td id = "ticket_result_guide">
 	회원님의 앞으로 이용가능한 시간: <br><text style="font-size:20px; color:red;" >${user.remain_time}</text>
 	</td> </tr> </table>

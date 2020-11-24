@@ -5,7 +5,7 @@
 	text-align : center;
 }
 #redButton {
-		width : 250px;
+		width : 120px;
 		height : 35px;
 		border : 1px solid  #ab2948;
 		background-color :  #ab2948;
@@ -14,7 +14,7 @@
 
 }
 #whiteButton {
-		width : 250px;
+		width : 120px;
 		height : 35px;
 		border : 1px solid  #ab2948;
 		color :  #ab2948;

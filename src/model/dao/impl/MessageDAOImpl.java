@@ -8,9 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import model.MessageReceive;
 import model.MessageSend;
-import model.MessageSent;
 import model.dao.ConnectionManager;
 import model.dao.MessageDao;
 
@@ -25,7 +23,7 @@ public class MessageDAOImpl implements MessageDao {
 	       return new java.sql.Date(today.getTime());
 	}
 
-	public List<MessageSent> getMessageSentList(String user_id) {
+	public List<MessageSend> getMessageSentList(String user_id) {
 		
 		Connection conn = null;
 		PreparedStatement pStmt = null;
@@ -33,7 +31,7 @@ public class MessageDAOImpl implements MessageDao {
 		
 		String query = "SELECT msg_id, msg_content, send_time, receiver_id, sender_id "
 				+ "FROM MESSAGE "
-				+ "WHERE sender_id = ? ";
+				+ "WHERE sender_id = ?";
 
 		
 		try {
@@ -42,7 +40,7 @@ public class MessageDAOImpl implements MessageDao {
 			pStmt.setString(1, user_id);
 			rs = pStmt.executeQuery();
 			
-			List<MessageSent> list = new ArrayList<MessageSent>();
+			List<MessageSend> list = new ArrayList<MessageSend>();
 			while (rs.next()) {
 				int msg_id = rs.getInt("msg_id");
 				String msg_content = rs.getString("msg_content");
@@ -50,7 +48,7 @@ public class MessageDAOImpl implements MessageDao {
 				String receiver_id = rs.getString("receiver_id");
 				String sender_id = rs.getString("sender_id");
 	
-				MessageSent msg_sent = new MessageSent(msg_id, msg_content, send_time, receiver_id, sender_id);
+				MessageSend msg_sent = new MessageSend(msg_id, msg_content, send_time, receiver_id, sender_id);
 				list.add(msg_sent);	
 			}
 			return list;
@@ -74,30 +72,30 @@ public class MessageDAOImpl implements MessageDao {
 		return null;
 	}
 
-	public List<MessageReceive> getMessageReceiveList(String user_id) {
+	public List<MessageSend> getMessageReceiveList(String user_id) {
 		
 		Connection conn = null;
 		PreparedStatement pStmt = null;
 		ResultSet rs = null;
 
-		String query = "SELECT msg_id, msg_content, receive_time, receiver_id, sender_id "
+		String query = "SELECT msg_id, msg_content, send_time, receiver_id, sender_id "
 				+ "FROM MESSAGE "
-				+ "WHERE receiver_id = ? ";
+				+ "WHERE receiver_id = ?";
 				
 				try { 
 					conn = cm.getConnection();
 					pStmt = conn.prepareStatement(query);
 					pStmt.setString(1, user_id);
 					rs = pStmt.executeQuery();			
-					List<MessageReceive> list = new ArrayList<MessageReceive>();
+					List<MessageSend> list = new ArrayList<MessageSend>();
 					while (rs.next()) {	
 						int msg_id = rs.getInt("msg_id");
 						String msg_content = rs.getString("msg_content");
-						Date receive_time = rs.getDate("receive_time");
+						Date send_time = rs.getDate("send_time");
 						String receiver_id = rs.getString("receiver_id");
 						String sender_id = rs.getString("sender_id");
 			
-						MessageReceive msg_rece = new MessageReceive(msg_id, msg_content, receive_time, receiver_id, sender_id);
+						MessageSend msg_rece = new MessageSend(msg_id, msg_content, send_time, receiver_id, sender_id);
 						list.add(msg_rece);
 					}
 					return list;		
@@ -142,7 +140,7 @@ public class MessageDAOImpl implements MessageDao {
 			
 			rs = pStmt.executeQuery();
 			
-			System.out.println("insertMessageSend ì™„ë£Œ");
+			System.out.println("insertMessageSend ¿Ï·á");
 			conn.commit();
 			return true;
 			

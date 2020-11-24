@@ -99,10 +99,22 @@ table,th,td{
 		table{
 			width: 100%
 		}
+		
+      #gomainBtn {
+         width : 300px;
+       	 height : 30px;
+         border-radius : 30px; 
+         border : 1px solid #ab2948; 
+         background-color : #ab2948;
+         color : #FFFFFF;
+      }
 </style>
 </head>
 
 <body>
+<div style="padding:20px 30px 10px 30px" align="left">
+      <a href="<c:url value='/menu' />"><img src="<c:url value='/images/menuicon.png' />" width="35" height="30" /></a>
+   </div>
 <div class="container" align="center">
   <header>
       <h1>대여관리</h1>
@@ -135,7 +147,7 @@ table,th,td{
 			</tr>
 		</thead>
 	</table>
-
+	<br> <input type="button" value = "메인페이지" id="gomainBtn" onClick="location.href='<c:url value='/main' />'">
 </div>
 </body>
 </html>

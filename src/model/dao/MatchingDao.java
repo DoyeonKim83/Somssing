@@ -29,7 +29,7 @@ public class MatchingDao {
 	
 	public static int insertCommunity(Community com) {
 		Connection conn = null;
-		PreparedStatement pStmt = null;			// PreparedStatment ���� ���� ����
+		PreparedStatement pStmt = null;			// PreparedStatment 占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙
 		ResultSet rs = null;
 		Community comNew;
 		
@@ -64,14 +64,14 @@ public class MatchingDao {
 			if (rs.next()) {
 				comm_id = rs.getInt(1);
 			}	
-			
+			conn.commit();
 			System.out.println("insertCommunity() 수행완료 ");
 			return comm_id;
 			
 			
 		}catch (SQLException ex) {
 			ex.printStackTrace();
-		} finally {		// �ڿ� �ݳ�
+		} finally {		// 占쌘울옙 占쌥놂옙
 			if (rs != null) 
 				try { 
 					rs.close(); 
@@ -117,12 +117,13 @@ public class MatchingDao {
 				comm = new Community(comm_id, content, title, comm_time, user_id);
 				list.add(comm);	
 			}
-			System.out.println(" printComList() 수행완료 ");
+			
+			System.out.println(" printComList() �닔�뻾�셿猷� ");
 			return list;
 			
 		}catch (SQLException ex) {
 			ex.printStackTrace();
-		} finally {		// �ڿ� �ݳ�
+		} finally {		// 占쌘울옙 占쌥놂옙
 			if (rs != null) 
 				try { 
 					rs.close(); 
@@ -162,12 +163,12 @@ public class MatchingDao {
 				String user_id = rs.getString("user_id");
 				comm = new Community(comm_id, content, title, comm_time, user_id);
 			}
-			System.out.println("checkCom 수행완료 ");
+			System.out.println("checkCom �닔�뻾�셿猷� ");
 			return comm;
 			
 		}catch (SQLException ex) {
 			ex.printStackTrace();
-		} finally {		// �ڿ� �ݳ�
+		} finally {		// 占쌘울옙 占쌥놂옙
 			if (rs != null) 
 				try { 
 					rs.close(); 
@@ -188,7 +189,7 @@ public class MatchingDao {
 	public static void updatePost(int comm_id, String new_title, String new_content) {
 		
 		Connection conn = null;
-		PreparedStatement pStmt = null;			// PreparedStatment ���� ���� ����
+		PreparedStatement pStmt = null;			// PreparedStatment 占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙
 		ResultSet rs = null;
 		
 		String query = "update Community set content = ?, title = ?"
@@ -203,10 +204,10 @@ public class MatchingDao {
 			
 			rs = pStmt.executeQuery();	
 			System.out.println("updatePost 수행완료 ");
-			
+			conn.commit();
 		}catch (SQLException ex) {
 			ex.printStackTrace();
-		} finally {		// �ڿ� �ݳ�
+		} finally {		// 占쌘울옙 占쌥놂옙
 			if (rs != null) 
 				try { 
 					rs.close(); 
@@ -242,11 +243,12 @@ public class MatchingDao {
 			pStmt.setInt(1, comm_id);			
 			rs = pStmt.executeQuery();	
 			System.out.println("deletePost 수행완료 ");
+			conn.commit();
 			return true;
 			
 		}catch (SQLException ex) {
 			ex.printStackTrace();
-		} finally {		// �ڿ� �ݳ�
+		} finally {		// 占쌘울옙 占쌥놂옙
 			if (rs != null) 
 				try { 
 					rs.close(); 

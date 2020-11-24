@@ -4,23 +4,31 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import controller.Controller;
-import model.MessageReceive;
+import model.MessageSend;
 import model.service.MessageManager;
 
 
 public class MessageReceiveController implements Controller{
 
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String userId = request.getParameter("user_id");
-
-		MessageManager manager = MessageManager.getInstance();
-		List<MessageReceive> msgRe_List = manager.getMessageReceiveList(userId);
+		HttpSession session;
+		try {
+			
+			session = request.getSession();
+			String user_id = (String) session.getAttribute("user_id");
 	
-		request.setAttribute("msgRe_List", msgRe_List);					
-
-		return "/message/messageReceive.jsp";
+			MessageManager manager = MessageManager.getInstance();
+			List<MessageSend> msgSent_List = manager.getMessageReceiveList(user_id);
+	
+			request.setAttribute("list", msgSent_List);				
+	
+			return "/message/messageReceive.jsp";
+		} catch (Exception e) {
+			return "/main/MenuPage.jsp";
+		}
 	}
 
 }
