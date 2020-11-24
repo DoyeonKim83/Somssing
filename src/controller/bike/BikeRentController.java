@@ -10,41 +10,30 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.Controller;
+import controller.user.UserSessionUtils;
 import model.Rent;
 import model.service.RentManager;
-
+import model.service.UserManager;
 
 public class BikeRentController implements Controller {
-    private static final Logger log = LoggerFactory.getLogger(BikeRentController.class);
-    java.text.DateFormat df = new java.text.SimpleDateFormat("yyyy-MM-dd");
-    @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    	
-    	RentManager manager = RentManager.getInstance();
-    	try {
-    	Date rental_time = df.parse(request.getParameter("rental_time"));
-    	Date return_time = df.parse(request.getParameter("return_time"));
-    	int use = Integer.parseInt(request.getParameter("use"));
-    	String user_id = request.getParameter("user_id");
-    	String bike_id = request.getParameter("bike_id");
-    	String rental_name = request.getParameter("rental_name");
-	
-    	System.out.println(rental_time);
-    	System.out.println(bike_id);
-    	System.out.println(rental_name);
-        
-    	
-    	List<Rent> list = new ArrayList<Rent>();
-    	list = manager.getRentList(bike_id);
-    	
-    	Rent rent = new Rent(rental_time, return_time, use, user_id, bike_id, rental_name);
-    	Rent new_rent = manager.insertRent(rent);
-		
-	    request.setAttribute("new_rent", new_rent);
-	        return "/bike/rentList.jsp";
-	        
+	private static final Logger log = LoggerFactory.getLogger(BikeRentController.class);
+	java.text.DateFormat df = new java.text.SimpleDateFormat("yyyy-MM-dd");
+
+	@Override
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		RentManager manager = RentManager.getInstance();
+		try {
+			String rental_id = request.getParameter("rental_id");
+			String userId = UserSessionUtils.getLoginUserId(request.getSession());
+			
+			System.out.println(userId);
+			System.out.println(rental_id);
+
+			int result = manager.insertRent(userId, rental_id);
+			return "redirect:/rent/list";
 		} catch (Exception e) {
 			return "/bike/rent.jsp";
 		}
-    }
+	}
 }

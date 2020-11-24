@@ -72,30 +72,29 @@ public class RentDAOImpl implements RentDao {
 		return null;
 	}
 	
-	public List<Rent> getRentList(String rental_name) {
+	public List<Rent> getRentList(String user_id) {
 		
 		Connection conn = null;
 		PreparedStatement pStmt = null;
 		ResultSet rs = null;
 		
-		String query = "SELECT rental_time, return_time, use, user_id, bike_id, rental_name "
-				+ "FROM BIKE b, RENT r"
-				+ "WHERE b.bike_id = r.bike_id";
+		String query = "SELECT rental_time, return_time, use, user_id, b.bike_id bid, b.rental_name rname "
+				+ "FROM bike b, rent r "
+				+ "WHERE b.bike_id = r.bike_id and r.user_id=?";
 		
 		try {
 			conn = cm.getConnection();
 			pStmt = conn.prepareStatement(query);
-			pStmt.setString(1, rental_name);
+			pStmt.setString(1, user_id);
 			rs = pStmt.executeQuery();
 			
 			List<Rent> list = new ArrayList<Rent>();
-			if (rs.next()) {
+			while (rs.next()) {
 				Date rental_time = rs.getDate("rental_time");
 				Date return_time = rs.getDate("return_time");
 				int use = rs.getInt("use");
-				String user_id = rs.getString("user_id");
-				String bike_id = rs.getString("bike_id");
-				String rental_Name = rs.getString("rental_name");
+				String bike_id = rs.getString("bid");
+				String rental_Name = rs.getString("rname");
 					
 				Rent rt = new Rent(rental_time, return_time, use, user_id, bike_id, rental_Name);
 				list.add(rt);	
@@ -121,41 +120,57 @@ public class RentDAOImpl implements RentDao {
 		return null;
 	}
 
-	public Rent insertRent(Rent rent) {
+	public int insertRent(String user_id, String rentalOffice_id) {
 		Connection conn = null;
 		PreparedStatement pStmt = null;
 		ResultSet rs = null;
+		String bike_id = null;
+		String rental_name = null;
+		int broken_ok = -1, rental_ok = -1, lost_ok = -1;
+		int result = -1;
 		
-		String query =  "INSERT INTO RENT (rental_time, return_time, use, user_id, bike_id, rental_Name) " +
+		String query1 = "SELECT rental_ok, broken_ok, lost_ok, b.rental_name rname, b.bike_id bid "
+				   + "FROM rentaloffice r, bike b "
+				   + "WHERE r.rental_name = b.rental_name and r.rental_id=?";
+		
+		String query2 =  "INSERT INTO RENT (rental_time, return_time, use, user_id, bike_id, rental_Name) " +
 				 "VALUES (?, ?, ?, ?, ?, ?) ";
 		
 		try {
 			conn = cm.getConnection();
 			
-			pStmt = conn.prepareStatement(query);
-			java.sql.Date date1 = getCurrentDatetime();
-			pStmt.setDate(1, date1);
-			java.sql.Date date2 = getCurrentDatetime();
-			pStmt.setDate(2, date2);
-			pStmt.setInt(3, rent.getUse());
-			pStmt.setString(4, rent.getUser_id());
-			pStmt.setString(5, rent.getBike_id());
-			pStmt.setString(6, rent.getRental_name());
-			
+			pStmt = conn.prepareStatement(query1);
+			pStmt.setString(1, rentalOffice_id);
 			rs = pStmt.executeQuery();
-			System.out.println("insertRent 완료 ");
+			if (rs.next()) {
+				bike_id = rs.getString("bid");
+				rental_ok = rs.getInt("rental_ok");
+				broken_ok = rs.getInt("broken_ok");
+				lost_ok = rs.getInt("lost_ok");
+				rental_name = rs.getString("rname");
+			}
 			
-//			if (rs.next()) {
-//				Date rental_time = rs.getDate("rental_time");
-//				Date return_time = rs.getDate("return_time");
-//				int use = rs.getInt("use");
-//				String user_id = rs.getString("user_id");
-//				String bike_id = rs.getString("bike_id");
-//				String rental_Name = rs.getString("rental_name");
-//				
-//				Rent rt = new Rent(rental_time, return_time, use, user_id, bike_id, rental_Name);
-//				return rt;
-//			}	
+			pStmt.close();
+			
+			java.sql.Date date = getCurrentDatetime();
+			if (rental_ok == 0 && broken_ok == 0 && lost_ok == 0) {
+				pStmt = conn.prepareStatement(query2);
+				pStmt.setDate(1, date);
+				pStmt.setDate(2, date);
+				pStmt.setInt(3, 1);
+				pStmt.setString(4, user_id);
+				pStmt.setString(5, bike_id);
+				pStmt.setString(6, rental_name);
+			}
+			
+			result = pStmt.executeUpdate(); // update 문 실행
+			if (result != -1) {
+				conn.commit();
+			} else {
+				conn.rollback();
+			}
+			return result;
+			
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		} finally {
@@ -173,35 +188,31 @@ public class RentDAOImpl implements RentDao {
 				} catch (SQLException ex) { ex.printStackTrace(); }
 		}	
 		
-		return null;
+		return -1;
 	}
 
-	public int deleteRent(String user_id) {
+	public int deleteRent(String bike_id) {
 		Connection conn = null;
 		PreparedStatement pStmt = null;
 		ResultSet rs = null;
+		int result = -1; 
 		
-		String query = "DELETE FROM RENT WHERE user_id = ?";
+		String query = "DELETE FROM RENT WHERE bike_id=?";
 		
 		try {
 			conn = cm.getConnection();
 			pStmt = conn.prepareStatement(query);
-			pStmt.setString(1, user_id);
-			rs = pStmt.executeQuery();
+			pStmt.setString(1, bike_id);
+			result = pStmt.executeUpdate();
 			System.out.println("deleteRent 완료");
 			
-//			if (rs.next()) {
-//	
-//				Date rental_time = rs.getDate("rental_time");
-//				Date return_time = rs.getDate("return_time");
-//				int use = rs.getInt("use");
-//				String user_Id = rs.getString("user_id");
-//				String bike_id = rs.getString("bike_id");
-//				String rental_Name = rs.getString("rental_name");
-//				
-//				Rent rt = new Rent(rental_time, return_time, use, user_Id, bike_id, rental_Name);
-//				return rt;
-//			}	
+			if (result != -1) {
+				conn.commit();
+			} else {
+				conn.rollback();
+			}
+
+			return result;
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		} finally {
@@ -219,7 +230,7 @@ public class RentDAOImpl implements RentDao {
 				} catch (SQLException ex) { ex.printStackTrace(); }
 		}	
 		
-		return 0;
+		return -1;
 	}
 
 

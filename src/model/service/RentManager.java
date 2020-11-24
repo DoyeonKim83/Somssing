@@ -24,16 +24,16 @@ public class RentManager {
 		return rentMan;
 	}
 	
-	public Rent insertRent(Rent rent) throws SQLException {
-		return rentDAO.insertRent(rent);
+	public int insertRent(String user_id, String rentalOffice_id) throws SQLException {
+		return rentDAO.insertRent(user_id, rentalOffice_id);
 	}	
 	
-	public int deleteRent(String user_id) throws SQLException {
-		return rentDAO.deleteRent(user_id);
+	public int deleteRent(String bike_id) throws SQLException {
+		return rentDAO.deleteRent(bike_id);
 	}
 
-	public List<Rent> getRentList(String rental_name) throws SQLException {
-		return rentDAO.getRentList(rental_name);
+	public List<Rent> getRentList(String user_id) throws SQLException {
+		return rentDAO.getRentList(user_id);
 	}
 	
 	public Rent getRentByUserId(String userId)

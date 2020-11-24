@@ -55,7 +55,7 @@
 		<table align="center" border="0" width="70%" height="500" style="table-layout: fixed; border-spacing:20px;">
 			<tr>
 			    <td><a href="<c:url value='/user/view?command=main' />"><div class="menu">마이페이지 </div></a></td>
-			    <td><a href="<c:url value='/' />"><div class="menu">대여정보</div></a></td>
+			    <td><a href="<c:url value='/rent/list' />"><div class="menu">대여정보</div></a></td>
 			</tr>
 			<tr>
 			    <td><a href="<c:url value='/ticket/buyForm' />"><div class="menu">이용권결제</div></a></td>

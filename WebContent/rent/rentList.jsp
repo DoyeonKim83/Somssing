@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -103,21 +103,21 @@ table,th,td{
 </head>
 
 <body>
-<div class="container">
+<div class="container" align="center">
   <header>
       <h1>대여관리</h1>
   </header>  
     <nav class="navi">
       <ul>
-        <li><a href="rentList.jsp">대여신청/목록</a></li>
-        <li><a href="return.jsp">반납</a></li>
-        <li><a href="rent.jsp">대여</a></li>
-        <li><a href="history.jsp">대여/반납이력</a></li>
+        <li><a href="<c:url value='/rent/list' />">대여신청/목록</a></li>
+        <li><a href="<c:url value='/rentReturn' />">반납</a></li>
       </ul>
     </nav>  
+    <br><br>
     <h2>대여신청목록</h2>
 	<!-- <a>대여신청 목록이 없습니다.</a> -->
-	<table>
+	<br><br>
+	<table style="padding: 10px 30px 0px 30px"; >
 		<thead>
 			<tr>
 				<th>빌린시간</th>

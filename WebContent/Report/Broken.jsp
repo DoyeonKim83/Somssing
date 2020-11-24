@@ -33,10 +33,10 @@
    <div style="padding:5px 20px 0px 20px" align="center">
       <div style="padding:0px 10px 0px 10px; height:170px;">
          <form action="<c:url value='/report/choice/broken' />">
-            &nbsp;&nbsp;&nbsp;자전거 일련번호&nbsp;&nbsp;<input type="text" required="required" name="bike_id" style="border:1px solid #ab2948;">
-            &nbsp;&nbsp;&nbsp;대여소 장소&nbsp;&nbsp;<input type="text" required="required" name="rentalOffice_name" style="border:1px solid #ab2948;"><br><br>
-            &nbsp;&nbsp;&nbsp;대여소 아이디&nbsp;&nbsp;<input type="text" required="required" name="rentalOffice_id" style="border:1px solid #ab2948;"><br><br>
-            &nbsp;&nbsp;&nbsp;사유&nbsp;&nbsp;<input type="text" required="required" name="why_BrokenOrLost" style="width:60%; height:70px; border:1px solid #ab2948;"><br><br>
+            &nbsp;&nbsp;&nbsp;자전거 일련번호&nbsp;&nbsp;<input type="text" name="bike_id" style="border:1px solid #ab2948;">
+            &nbsp;&nbsp;&nbsp;대여소 장소&nbsp;&nbsp;<input type="text" name="rentalOffice_name" style="border:1px solid #ab2948;"><br><br>
+            &nbsp;&nbsp;&nbsp;대여소 아이디&nbsp;&nbsp;<input type="text" name="rentalOffice_id" style="border:1px solid #ab2948;"><br><br>
+            &nbsp;&nbsp;&nbsp;사유&nbsp;&nbsp;<input type="text" name="why_BrokenOrLost" style="width:60%; height:70px; border:1px solid #ab2948;"><br><br>
             <input id="btn" type="submit" value="접수하기"><br><br>
          </form>
       </div>

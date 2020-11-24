@@ -33,10 +33,10 @@ pageEncoding="UTF-8"%>
          font-family: 'Nanum Barun Gothic', sans-serif;
          }
       
-      #rbtn {
+      #writeBtn {
          width : 100px;
        	 height : 20px;
-         border-radius : 3px; 
+         border-radius : 30px; 
          border : 1px solid #ab2948; 
          background-color : #FFFFFF;
          color : #ab2948;
@@ -44,12 +44,14 @@ pageEncoding="UTF-8"%>
                   
       }
       #gomainBtn {
-         width : 300px;
-       	 height : 30px;
+         width : 100px;
+       	 height : 20px;
          border-radius : 30px; 
          border : 1px solid #ab2948; 
          background-color : #ab2948;
          color : #FFFFFF;
+         
+                  
       }
       
       #post_title {
@@ -77,19 +79,17 @@ pageEncoding="UTF-8"%>
 <body>
 <div align = "center">
    <br><br>
-   <div align="left">
-      <a href="<c:url value='/menu' />"><img src="<c:url value='/images/menuicon.png' />" width="35" height="30" /></a>
-   </div>
+   
    <form name="f" method="GET" action="<c:url value='/matching/checkPost'/>">   
-   <h2>매칭 게시판</h2>  
-   <input type="button" value = "받은 쪽지함" id="rbtn" onClick="location.href='<c:url value='/message/messageReceive' />'">
-   <input type="button" value = "게시글 작성" id="rbtn" onClick="location.href='<c:url value='/matching/writeForm' />'"> 
+   <h2>매칭 게시판</h2>    
+   <input type="button" value = "메인으로 이동" id="gomainBtn" onClick="location.href='<c:url value='/main' />'">
+   <input type="button" value = "게시글 작성" id="writeBtn" onClick="location.href='<c:url value='/matching/writeForm' />'"> 
    <br>
    <table>	<tr> <td id = "matching_guide">
 	-솜씽이들을 만날 수 있는 매칭 보드입니다. 	<br>
 	-욕설 및 비방글은 <text style="color:#d1150f;" >무통보 삭제 </text>합니다.	<br>
 	</td> </tr> </table>
- 
+   
    <table align="center" id="matchingboard">
        <tr id="matchingboard_tr">
            <th style="width:150px;" id="matchingboard_th">번호</th>
@@ -107,7 +107,7 @@ pageEncoding="UTF-8"%>
          </tr>
          </c:forEach>
    </table>
-    <br> <input type="button" value = "메인페이지" id="gomainBtn" onClick="location.href='<c:url value='/main' />'">
+   
 </form>
 </div>
 </body>

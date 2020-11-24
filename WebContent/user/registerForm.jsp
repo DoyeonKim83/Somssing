@@ -90,25 +90,25 @@
 		  	  <tr >
 				<td width="100" align="center">사용자ID</td>
 				<td bgcolor="ffffff" style="padding-left: 10; padding-right : 10;">
-					<input type="text" style="width: 250;" name="user_id" required="required">
+					<input type="text" style="width: 250;" name="user_id">
 				</td>
 			  </tr>
 		  	  <tr>
 				<td width="100" align="center">비밀번호</td>
 				<td  bgcolor="ffffff" style="padding-left: 10; padding-right : 10;">
-					<input type="password" style="width: 250" name="password" required="required">
+					<input type="password" style="width: 250" name="password">
 				</td>
 			  </tr>
 		  	  <tr>
 				<td width="100" align="center">비밀번호<br>확인</td>
 				<td  bgcolor="ffffff" style="padding-left: 10; padding-right : 10;">
-					<input type="password" style="width: 250" name="password2" required="required">
+					<input type="password" style="width: 250" name="password2">
 				</td>
 			  </tr>
 		  	  <tr>
 				<td width="100" align="center">이름</td>
 				<td bgcolor="ffffff" style="padding-left: 10; padding-right : 10;">
-					<input type="text" style="width: 250" name="userName" required="required">
+					<input type="text" style="width: 250" name="userName" >
 				</td>
 			  </tr>
 			  <tr>
@@ -130,19 +130,19 @@
 			  <tr>
 				<td width="100" align="center">이메일 주소</td>
 				<td bgcolor="ffffff" style="padding-left: 10; padding-right : 10;">
-					<input type="email" style="width: 250" name="email"	required="required"	>
+					<input type="email" style="width: 250" name="email"		>
 				</td>
 			  </tr>	
 		  	  <tr>
 				<td width="100" align="center">전화번호</td>
 				<td bgcolor="ffffff" style="padding-left: 10; padding-right : 10;">
-					<input type="text" style="width: 250" name="phone" placeholder = "01011112222" required="required" >
+					<input type="text" style="width: 250" name="phone" placeholder = "01011112222"  >
 				</td>
 			  </tr>	
 			  <tr>
 				<td width="100" align="center">지역</td>
 				<td bgcolor="ffffff" style="padding-left: 10; padding-right : 10;">
-					<input type="text" style="width: 250" name="addr" placeholder = "예시)서울시 성북구" required="required">	</td>
+					<input type="text" style="width: 250" name="addr" placeholder = "예시)서울시 성북구" >	</td>
 			  </tr>	
 			 
 			  </table>

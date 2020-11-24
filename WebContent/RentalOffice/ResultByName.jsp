@@ -26,6 +26,7 @@ charset=UTF-8" pageEncoding="UTF-8"%>
 <body>
 <div align="center" style="padding: 50px 0px 0px 0px;">
 <h3>${result2.rentalOffice_name}의 검색 결과입니다</h3><br>
+<form name="form" method="POST" action="<c:url value='/rent'><c:param name='rental_id' value='${result2.rentalOffice_id}'/></c:url>">
 <table align="center">
    <tr height="50">
       <th width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE"> 지역
@@ -39,10 +40,11 @@ charset=UTF-8" pageEncoding="UTF-8"%>
       <td width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE">${result2.rentalOffice_id}</td>
       <td width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE">${result2.latitude}</td>
       <td width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE">${result2.longitude}</td>
-       <td width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE">
-      	<button id="btn" onclick="location.href='<c:url value='/rent' />'">대여</button></td>
+      <td width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE">
+      <input type="submit" id="btn" value="대여" /></td>
    </tr>
 </table>
+</form>
 </div>
 </body>
 </html>

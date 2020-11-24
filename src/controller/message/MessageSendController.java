@@ -1,7 +1,6 @@
 package controller.message;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,12 +34,9 @@ public class MessageSendController implements Controller{
     		System.out.println("MessageSendControllercontroller : 2");
 			MessageSend msg_send = new MessageSend(msg_content, receiver_id, sender_id);
 			System.out.println("MessageSendControllercontroller : 3");
-			boolean result = manager.insertMessageSend(msg_send);
+			MessageSend new_send = manager.insertMessageSend(msg_send);
 			System.out.println("MessageSendControllercontroller : 4");
-			
-			List<MessageSend> list = manager.getMessageSentList(sender_id);
-			request.setAttribute("list", list);
-			
+			request.setAttribute("new_com", new_send);					
 			return "/message/messageSent.jsp"; 
     	} catch (Exception e) {
     		return "/message/messageSend.jsp";

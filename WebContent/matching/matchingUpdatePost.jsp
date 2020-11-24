@@ -38,46 +38,29 @@ pageEncoding="UTF-8"%>
 		border : 1px solid #ab2948;
 		background-color : #ab2948;
 		color : #FFFFFF;
-		border-radius : 3px;
+		border-radius : 30px;
 	}
-	#title, #content {
-		
-		width : 500px;
-	
-	}
-	
-	#cancel_btn {
-		width : 50px;
-		height : 35px;
-		border : 1px solid #ab2948;
-		background-color : #FFFFFF;
-		color : #ab2948;
-		border-radius : 3px;
-	}
-	
 </style>
 <body>
 <form name="f" method="GET" accept-charset="UTF-8" action="<c:url value='/matching/updatePost'/>"> 
-	<div align="center">
-	<h3 >게시글 수정</h3>
+	<h3>게시글 수정</h3>
 	<div class="form-group">
+      <label for="title">제목</label>
 	<!-- placeholder 속성 입력한 데이터가 없는 경우 배경으로 나타난다.실제적으로 입력을 100자까지로 지정 -->
 	<!-- required 속성을 설정하면 필수입력 사항이된다. -->
 	<!-- pattern 속성을 이용한 정규표현식으로 데이터의 유효성 검사를 할 수 있다. -->
-    	<input type="text" class="form-control" id="title" placeholder="제목 입력(최대  20글자)" name="title" value = "${com.title}"
-    	 maxlength="100" required="required" pattern=".{4,20}">
+    	<input type="text" class="form-control" id="title"  name="title" value = "${com.title}"
+    	 maxlength="100" required="required" pattern=".{4,20}"> <!-- placeholder="제목 입력(최대  20글자)" placeholder="내용 작성(최대  100글자)" -->
     </div>
     
-    <div class="form-group">
+    <div class="form-group"> 
+   <label for="content">내용</label>
 <!--  여러줄의 데이터를 입력하고 하고자 할때 textarea 태그를 사용한다. -->
 <!--  textarea 안에 있는 모든 글자는 그대로 나타난다. 공백문자, tag, enter -->
-   <textarea class="form-control" rows="5" id="content"   name="content" placeholder="내용 작성(최대  100글자)" required="required" pattern=".{1,100}">${com.content}</textarea>
-	 </div>
- 	<input type="button" id="cancel_btn" value="취소" onclick="history.back()">
-	<input type = "submit" value = "수정" id = "write_btn">
-	<input type="hidden" name="comm_id" value= "${com.comm_id}">
-
+   <textarea class="form-control" rows="5" id="content"   name="content"  required="required">${com.content}</textarea>
+ </div>
+<input type="hidden" name="comm_id" value= "${com.comm_id}">
+<input type = "submit" value = "수정" id = "write_btn">
 </form>
-	</div>
 </body>
 </html>

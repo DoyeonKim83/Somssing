@@ -92,7 +92,14 @@ body{
 div{
 	text-align : center;
 }
-
+#return {
+				width : 250px;
+				height : 35px;
+				border : 1px solid  #ab2948;
+				background-color :  #ab2948;
+				color : #FFFFFF;
+				border-radius : 30px;
+			
 
 </style>
 </head>
@@ -104,14 +111,16 @@ div{
   </header>  
     <nav class="navi">
       <ul>
-        <li><a href="rentList.jsp">대여신청/목록</a></li>
-        <li><a href="return.jsp">반납</a></li>
-        <li><a href="rent.jsp">대여</a></li>
-        <li><a href="history.jsp">대여/반납이력</a></li>
+        <li><a href="<c:url value='/rent/list' />">대여신청/목록</a></li>
+        <li><a href="<c:url value='/rentReturn' />">반납</a></li>
       </ul>
     </nav>  
-    <h2>반납하기</h2><br><br>
-	<input type="button" id="return" value="반납하기" onClick="location.href='<c:url value='/rent/returnList' />'">
+    <br><br><br>
+    <h2>자전거 반납하기</h2><br><br>
+    <form name="form" method="POST" action="<c:url value='/rent/return' />">
+    	<input type="text" name="bikeId" /><br><br>
+		<input type="submit" id="return" value="반납하기" />
+	</form>
 </div>
 </body>
 </html>

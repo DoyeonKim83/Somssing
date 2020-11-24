@@ -33,14 +33,16 @@ charset=UTF-8" pageEncoding="UTF-8"%>
       <th width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE"> 대여하기
    </tr>
 <c:forEach var="RentalOffice" items="${list}">
-   <tr height="40">
-      <td width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE">${RentalOffice.rentalOffice_name}</td> 
-      <td width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE">${RentalOffice.rentalOffice_id}</td>
-      <td width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE">${RentalOffice.latitude}</td>
-      <td width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE">${RentalOffice.longitude}</td>
-      <td width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE">
-      	<button id="btn" onclick="location.href='<c:url value='/rent' />'">대여</button></td>
-   </tr>
+   <form name="form" method="POST" action="<c:url value='/rent'><c:param name='rental_id' value='${RentalOffice.rentalOffice_id}'/></c:url>">
+	   <tr height="40">
+	      <td width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE">${RentalOffice.rentalOffice_name}</td> 
+	      <td width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE">${RentalOffice.rentalOffice_id}</td>
+	      <td width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE">${RentalOffice.latitude}</td>
+	      <td width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE">${RentalOffice.longitude}</td>
+	      <td width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE">
+	      <input type="submit" id="btn" value="대여" /></td>
+	   </tr>
+   </form>
    </c:forEach>
 
 </table>

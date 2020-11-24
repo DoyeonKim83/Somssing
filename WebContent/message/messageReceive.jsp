@@ -12,67 +12,65 @@
    font-family: 'Nanum Gothic', sans-serif;
 }
 		table,th,td{
-			border: 1px solid gray;
-         border-collapse: collapse;
+			border: 1px solid black;
+			border-collapse: collapse;
 			table-layout:fixed;
 			margin-left : auto;
 			margin-right : auto;			
 		}
-		td {
-			height:25px;
-         	text-align : center;
-		}
-		th {
-			background-color : #ffdbe4;
-         	height : 30px;
-         	text-style:bold;
-		}
 		table{
-			width: 90%
+			width: 100%
 		}
 		body{
 			font-family: 'Nanum Barun Gothic', sans-serif;
 			}
-		#rbtn {
-         width : 100px;
-       	 height : 20px;
-         border-radius : 3px; 
-         border : 1px solid #ab2948; 
-         background-color : #FFFFFF;
-         color : #ab2948;
-         
-                  
-      }
+		#send{
+			border-radius : 30px;
+			background-color : #f0b3c1;
+			color : #FFFFFF;
+			float : right;
+		}
+		#receive{
+			border-radius : 30px;
+			background-color : #f0b3c1;
+			color : #FFFFFF;
+			float : right;
+		}
+		h3{
+			text-align : center;
+		}
 	</style>
 </head>
 <body>
-	<div align="center" >
-	<h2>받은 메시지함</h2>
+	<h3>받은 메시지함</h3>
 	<form action="<c:url value='/message/messageReceive' />" 
    name="messageReceive" method="POST">
-   <input type="button" id="rbtn" value="매칭 게시판" onClick="location.href='<c:url value='/matching/list' />'">
-	<input type="button" id="rbtn" value="보낸쪽지함" onClick="location.href='<c:url value='/message/messageSent' />'">
-	<br><br>
 	<table>
+		<thead>
 			<tr>
-				<th style="width:200px;" id="board_th">내용</th>
-				<th style="width:150px;" id="board_th">받은날짜</th>
-				<th style="width:150px;" id="board_th">보낸사람</th>
+				<th>메세지번호</th>
+				<th>내용</th>
+				<th>받은시각</th>
+				<th>보낸사람</th>
 			</tr>
 			<tr>
 				<c:forEach var="post" items="${list}">
 				<tr>
+		         	<td> ${post.msg_id} </td>
 		         	<td> ${post.msg_content } </td>
+		         	<td> ${post.receive_time } </td>
 		         	<td> ${post.send_time } </td>
 		         	<td> ${post.sender_id } </td>
 	        	</tr>
 	        	</c:forEach>
 			</tr>
-		
+		</thead>
 	</table>
 	</form>
-	
-</div>
-	
+	<hr>
+	<!-- <p align="center">받은 쪽지가 없습니다.</p> -->
+
+	<input type="button" id="send" value="쪽지보내기" onClick="location.href='<c:url value='/message/messageSend' />'">
+	<input type="button" id="receive" value="보낸쪽지목록" onClick="location.href='<c:url value='/message/messageSent' />'">
 </body>
 </html>

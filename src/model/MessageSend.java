@@ -23,9 +23,6 @@ public class MessageSend {
 		this.receiver_id = receiver_id;
 		this.sender_id = sender_id;
 	}
-	
-	
-	
 	public int getMsg_id() {
 		return msg_id;
 	}
