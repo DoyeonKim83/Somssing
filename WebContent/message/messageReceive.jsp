@@ -56,7 +56,6 @@
 				<c:forEach var="post" items="${list}">
 				<tr>
 		         	<td> ${post.msg_content } </td>
-		         	<td> ${post.receive_time } </td>
 		         	<td> ${post.send_time } </td>
 		         	<td> ${post.sender_id } </td>
 	        	</tr>

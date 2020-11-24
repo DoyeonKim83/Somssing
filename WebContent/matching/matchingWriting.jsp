@@ -70,7 +70,7 @@ pageEncoding="UTF-8"%>
     <div class="form-group">
 <!--  여러줄의 데이터를 입력하고 하고자 할때 textarea 태그를 사용한다. -->
 <!--  textarea 안에 있는 모든 글자는 그대로 나타난다. 공백문자, tag, enter -->
-   <textarea class="form-control" rows="5" id="content"   name="content" placeholder="내용 작성(최대  100글자)" required="required"></textarea>
+   <textarea class="form-control" rows="5" id="content"   name="content" placeholder="내용 작성(최대  100글자)" required="required" pattern=".{1,100}"></textarea>
  </div>
  <input type="button" id="cancel_btn" value="취소" onclick="history.back()">
 <input type = "submit" value = "작성" id = "write_btn">

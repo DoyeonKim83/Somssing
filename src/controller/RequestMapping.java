@@ -79,10 +79,8 @@ public class RequestMapping {
         mappings.put("/BikeServices/history", new BikeHistoryController());
         
         mappings.put("/message/messageReceive", new MessageReceiveController());
-        mappings.put("/message/messageReceivelist", new ForwardController("/message/messageReceive.jsp"));
         mappings.put("/message/messageSend", new MessageSendController());
         mappings.put("/message/messageSendForm", new MessageSendFormController());
-  
         mappings.put("/message/messageSent", new MessageSentController());
         
         mappings.put("/rent", new ForwardController("/rent/rent.jsp"));

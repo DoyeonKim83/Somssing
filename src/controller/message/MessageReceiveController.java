@@ -25,7 +25,7 @@ public class MessageReceiveController implements Controller{
 	
 			request.setAttribute("list", msgSent_List);				
 	
-			return "/message/messageSent.jsp";
+			return "/message/messageReceive.jsp";
 		} catch (Exception e) {
 			return "/main/MenuPage.jsp";
 		}

@@ -1,9 +1,7 @@
 package model.dao;
 
 import java.util.List;
-import model.MessageReceive;
 import model.MessageSend;
-import model.MessageSent;
 
 
 public interface MessageDao {
