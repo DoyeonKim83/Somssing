@@ -12,14 +12,23 @@
    font-family: 'Nanum Gothic', sans-serif;
 }
 		table,th,td{
-			border: 1px solid black;
-			border-collapse: collapse;
+			border: 1px solid gray;
+         border-collapse: collapse;
 			table-layout:fixed;
 			margin-left : auto;
 			margin-right : auto;			
 		}
+		td {
+			height:25px;
+         	text-align : center;
+		}
+		th {
+			background-color : #ffdbe4;
+         	height : 30px;
+         	text-style:bold;
+		}
 		table{
-			width: 100%
+			width: 90%
 		}
 		body{
 			font-family: 'Nanum Barun Gothic', sans-serif;
@@ -42,20 +51,20 @@
 	</style>
 </head>
 <body>
-	<h3>보낸 메시지함</h3>
+	<h2>보낸 메시지함</h2>
 	<form action="<c:url value='/message/messageSent' />" 
    name="messageSend" method="POST">
 	<table>
 		<thead>
 			<tr>
-				<th>내용</th>
-				<th>보낸시각</th>
-				<th>받은사람</th>
+				<th style="width:200px;" id="board_th">내용</th>
+				<th style="width:150px;" id="board_th">보낸날짜</th>
+				<th style="width:150px;" id="board_th">받은사람</th>
 			</tr>
 			<tr>
 				<c:forEach var="post" items="${list}">
 				<tr>
-		         	<td> ${post.msg_content } </td>
+		         	<td > ${post.msg_content } </td>
 		         	<td> ${post.send_time } </td>
 		         	<td> ${post.receiver_id } </td>
 	        	</tr>
@@ -64,8 +73,6 @@
 		</thead>
 	</table>
 	</form>
-	<hr>
-	<!-- <p align="center">보낸 쪽지가 없습니다.</p> -->
 
 	<input type="button" id="send" value="매칭 게시판 이동" onClick="location.href='<c:url value='/matching/list' />'">
 	<input type="button" id="receive" value="받은쪽지목록" onClick="location.href='<c:url value='/message/messageReceive' />'">
