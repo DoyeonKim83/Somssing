@@ -81,9 +81,11 @@ public class RequestMapping {
         mappings.put("/message/messageReceive", new MessageReceiveController());
         mappings.put("/message/messageReceivelist", new ForwardController("/message/messageReceive.jsp"));
         mappings.put("/message/messageSend", new MessageSendController());
-        mappings.put("/message/messageSendlist", new ForwardController("/message/messageSent.jsp"));
+        mappings.put("/message/messageSendlist", new MessageSendFormController());
         mappings.put("/message/messageSent", new MessageSentController());
         mappings.put("/message/messageSentlist", new ForwardController("/message/messageSent.jsp"));
+        
+        mappings.put("/rent", new ForwardController("/rent/rent.jsp"));
         mappings.put("/rent/rent", new BikeRentController());
         mappings.put("/rent/rentList", new ForwardController("/rent/rentList.jsp"));
         mappings.put("/rent/return", new BikeReturnController());

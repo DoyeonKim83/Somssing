@@ -116,7 +116,7 @@ div{
         <li><a href="history.jsp">대여/반납이력</a></li>
       </ul>
     </nav>  
-    <h3>rental_num을 선택하세요</h3><br>
+    <h3>bike_id를 선택하세요</h3><br>
 
     <form action="<c:url value='/rent/rentList' />" 
    name="rentlist" method="POST">
@@ -134,9 +134,9 @@ div{
     		<option value ="11">50000</option>
     		<option value ="12">50001</option>
     	</select>
+    	<br>
+    	<input type="submit" id="rent" value="대여하기">
     </form>
-    <br>
-    <input type="button" id="rent" value="대여하기" onClick="location.href='<c:url value='/rent/rentList'/>'">
 </div>
 </body>
 </html>

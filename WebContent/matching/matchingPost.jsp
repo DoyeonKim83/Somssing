@@ -77,7 +77,9 @@ pageEncoding="UTF-8"%>
     </td></tr> 
     
     <tr> <td class="form-control" style = "height:50px; border:0">
-       ${com.user_id} <input type = "button" value = "쪽지 보내기"  id = "communi_btn" onClick="location.href='<c:url value='/message/messageSend'/>'"> 
+       ${com.user_id} <input type = "button" value = "쪽지 보내기"  id = "communi_btn" 
+       	onClick="location.href='<c:url value='/message/messageSend'>
+       		<c:param value="${com.user_id }" name="recv_id"/></c:url>'"> 
        <input type="hidden" name="user_id" value= "${com.user_id}">
        <text style="float:right;"> ${com.comm_time } </text>
        <input type="hidden" name="comm_time" value= "${com.comm_time}">

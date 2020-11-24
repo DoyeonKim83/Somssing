@@ -16,7 +16,7 @@ public class SearchRentalOfficeByNameController implements Controller {
       String rentalOffice_name = request.getParameter("rentalOffice_name");
       
       RentalOffice result2 = new RentalOffice();
-      result2 = manager.getRentalOfficeById(rentalOffice_name);
+      result2 = manager.getRentalOfficeByName(rentalOffice_name);
       
       if (result2 == null) {
       	 System.out.print("존재하지 않는 대여소 이름입니다");

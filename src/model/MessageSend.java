@@ -17,6 +17,12 @@ public class MessageSend {
 		this.receiver_id = receiver_id;
 		this.sender_id = sender_id;
 	}
+	public MessageSend(String msg_content, String receiver_id, String sender_id) {
+		super();
+		this.msg_content = msg_content;
+		this.receiver_id = receiver_id;
+		this.sender_id = sender_id;
+	}
 	public int getMsg_id() {
 		return msg_id;
 	}

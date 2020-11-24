@@ -11,7 +11,7 @@ import model.dao.impl.MessageDAOImpl;
 
 public class MessageManager {
 	private static MessageManager msgMan = new MessageManager();
-	private MessageDao msgDAO;
+	private MessageDAOImpl msgDAO;
 	
 	private MessageManager() {
 		try {
@@ -25,7 +25,7 @@ public class MessageManager {
 		return msgMan;
 	}
 	
-	public MessageSend insertMessageSend(MessageSend msg_send) throws SQLException {
+	public boolean insertMessageSend(MessageSend msg_send) throws SQLException {
 		return msgDAO.insertMessageSend(msg_send);
 	}	
 

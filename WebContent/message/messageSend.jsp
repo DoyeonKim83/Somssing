@@ -24,9 +24,9 @@
 <body>
 	<p align="center">쪽지보내기</p>
 	<hr>
-	<form action="<c:url value='/message/messageSent'/>" name="messageSend" method="POST">
-	받는사람: <input type="text" name="receiver" size="12"><br>
-	내용: <p><textarea cols="50" rows="10"></textarea></p>
+	<form action="<c:url value='/message/messageSent'/>" name="messageSend" method="GET">
+	받는사람: <input type="text" name = "receiver_id" size="12" value = "${recv_id}" required readOnly > <br>
+	내용: <p><textarea cols="50" rows="10" name = "msg_content"></textarea></p>
 	
 	
 	<input type="submit" id="submit" value="전송" >

@@ -14,25 +14,28 @@ import model.service.MessageManager;
 public class MessageSendController implements Controller{
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
-    	java.text.DateFormat df = new java.text.SimpleDateFormat("yyyy-MM-dd");
+    	
   
     	MessageManager manager = MessageManager.getInstance();
     	int msg_id;
 		String msg_content, receiver_id, sender_id;
 		Date send_time;
     	try {
+    		System.out.println("MessageSendControllercontroller : 0");
     		HttpSession session = request.getSession();
     		sender_id = (String) session.getAttribute("user_id");
-			
-    		msg_id = Integer.parseInt(request.getParameter("msg_id"));
+    		System.out.println("MessageSendControllercontroller : 1");
+    		
+    		
     		msg_content = request.getParameter("msg_content");
-    		send_time = df.parse(request.getParameter("send_time"));
     		receiver_id = request.getParameter("receiver_id");
-    		sender_id = request.getParameter("sender_id");
-	    	
-			MessageSend msg_send = new MessageSend(msg_id, msg_content, send_time, receiver_id, sender_id);
+ 
+    		
+    		System.out.println("MessageSendControllercontroller : 2");
+			MessageSend msg_send = new MessageSend(msg_content, receiver_id, sender_id);
+			System.out.println("MessageSendControllercontroller : 3");
 			MessageSend new_send = manager.insertMessageSend(msg_send);
-		
+			System.out.println("MessageSendControllercontroller : 4");
 			request.setAttribute("new_com", new_send);					
 			return "/message/messageSent.jsp"; 
     	} catch (Exception e) {

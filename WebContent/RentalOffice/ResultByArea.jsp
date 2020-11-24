@@ -10,6 +10,14 @@ charset=UTF-8" pageEncoding="UTF-8"%>
 * {
    font-family: 'Nanum Gothic', sans-serif;
 }
+#btn {
+				width : 100px;
+				height : 35px;
+				border : 1px solid  #ab2948;
+				background-color :  #ab2948;
+				color : #FFFFFF;
+				border-radius : 30px;
+			}
 </style>
 <meta charset="UTF-8">
 <title>지역별 검색 결과</title>
@@ -22,6 +30,7 @@ charset=UTF-8" pageEncoding="UTF-8"%>
       <th width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE"> 아이디
       <th width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE"> 위도
       <th width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE"> 경도
+      <th width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE"> 대여하기
    </tr>
 <c:forEach var="RentalOffice" items="${list}">
    <tr height="40">
@@ -29,8 +38,11 @@ charset=UTF-8" pageEncoding="UTF-8"%>
       <td width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE">${RentalOffice.rentalOffice_id}</td>
       <td width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE">${RentalOffice.latitude}</td>
       <td width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE">${RentalOffice.longitude}</td>
+      <td width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE">
+      	<button id="btn" onclick="location.href='<c:url value='/rent' />'">대여</button></td>
    </tr>
-</c:forEach>
+   </c:forEach>
+
 </table>
 </div>
 </body>
