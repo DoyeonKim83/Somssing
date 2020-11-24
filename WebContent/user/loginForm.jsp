@@ -61,12 +61,12 @@
 		</head> 
 		<body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0 marginwidth=0 marginheight=0>
 		 <div align = "center">
-		 <form name="f" accept-charset="UTF-8" method="GET" action="<c:url value='/user/login' />" >	 
+		 <form name="f" accept-charset="UTF-8" method="POST" action="<c:url value='/user/login' />" >	 
 		   <h3><br>로그인</h3>
 			 <table>
 				 <tr> <td > <input type = "text" placeholder = " 아이디" name = "user_id" id = "loginId" required="required"> </td> </tr>
 				 <tr> <td style="height : 2; "></td> </tr>
-				 <tr> <td > <input type = "text" placeholder = " 비밀번호" name = "password" id = "loginpw" required="required"> </td> </tr>
+				 <tr> <td > <input type = "password" placeholder = " 비밀번호" name = "password" id = "loginpw" required="required"> </td> </tr>
 				 <tr> <td style="height : 12; "></td> </tr>
 				 <tr> <td align = "center"> <input type = "submit" value = "로그인" id = "loginbtn"> </td> </tr>
 				 <tr> <td style="height : 2; "></td> </tr> <!-- onClick="location.href='<c:url value='/user/registerForm' />'"> -->
