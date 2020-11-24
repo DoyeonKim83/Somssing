@@ -69,8 +69,8 @@ public class RequestMapping {
         //  matching
         mappings.put("/matching/list", new MatchingListController());
         mappings.put("/matching/checkPost", new MatchingPostCheckController());
-        mappings.put("/matching/update", new MatchingUpdatePostController());
-        mappings.put("/matching/updateForm", new ForwardController("/matching/matchingUpdatePost.jsp"));
+        mappings.put("/matching/updatePost", new MatchingUpdatePostController());
+        mappings.put("/matching/updateForm", new MatchingUpdateFormController());
         mappings.put("/matching/writeForm", new ForwardController("/matching/matchingWriting.jsp"));
         mappings.put("/matching/write", new MatchingWritingController());
         mappings.put("/matching/delete", new MatchingDeletePostController());
