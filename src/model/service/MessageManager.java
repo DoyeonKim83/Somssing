@@ -3,9 +3,7 @@ package model.service;
 import java.sql.SQLException;
 import java.util.List;
 
-import model.MessageReceive;
 import model.MessageSend;
-import model.MessageSent;
 import model.dao.MessageDao;
 import model.dao.impl.MessageDAOImpl;
 
@@ -29,12 +27,12 @@ public class MessageManager {
 		return msgDAO.insertMessageSend(msg_send);
 	}	
 
-	public List<MessageSent> getMessageSentList(String user_id)
+	public List<MessageSend> getMessageSentList(String user_id)
 		throws SQLException {
 		return msgDAO.getMessageSentList(user_id);
 	}
 	
-	public List<MessageReceive> getMessageReceiveList(String user_id)
+	public List<MessageSend> getMessageReceiveList(String user_id)
 			throws SQLException {
 			return msgDAO.getMessageReceiveList(user_id);
 		}

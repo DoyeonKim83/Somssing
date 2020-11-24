@@ -36,7 +36,7 @@ pageEncoding="UTF-8"%>
       #writeBtn {
          width : 100px;
        	 height : 20px;
-         border-radius : 30px; 
+         border-radius : 3px; 
          border : 1px solid #ab2948; 
          background-color : #FFFFFF;
          color : #ab2948;
@@ -46,7 +46,7 @@ pageEncoding="UTF-8"%>
       #gomainBtn {
          width : 100px;
        	 height : 20px;
-         border-radius : 30px; 
+         border-radius : 3px; 
          border : 1px solid #ab2948; 
          background-color : #ab2948;
          color : #FFFFFF;

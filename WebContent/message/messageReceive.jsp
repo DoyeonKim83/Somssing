@@ -48,7 +48,6 @@
 	<table>
 		<thead>
 			<tr>
-				<th>메세지번호</th>
 				<th>내용</th>
 				<th>받은시각</th>
 				<th>보낸사람</th>
@@ -56,7 +55,6 @@
 			<tr>
 				<c:forEach var="post" items="${list}">
 				<tr>
-		         	<td> ${post.msg_id} </td>
 		         	<td> ${post.msg_content } </td>
 		         	<td> ${post.receive_time } </td>
 		         	<td> ${post.send_time } </td>
@@ -70,7 +68,7 @@
 	<hr>
 	<!-- <p align="center">받은 쪽지가 없습니다.</p> -->
 
-	<input type="button" id="send" value="쪽지보내기" onClick="location.href='<c:url value='/message/messageSend' />'">
+	<input type="button" id="send" value="매칭 게시판 이동" onClick="location.href='<c:url value='/matching/list' />'">
 	<input type="button" id="receive" value="보낸쪽지목록" onClick="location.href='<c:url value='/message/messageSent' />'">
 </body>
 </html>
