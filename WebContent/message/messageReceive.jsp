@@ -51,7 +51,7 @@
 	<form action="<c:url value='/message/messageReceive' />" 
    name="messageReceive" method="POST">
    <input type="button" id="rbtn" value="매칭 게시판" onClick="location.href='<c:url value='/matching/list' />'">
-	<input type="button" id="rbtn" value="보낸쪽지목록" onClick="location.href='<c:url value='/message/messageSent' />'">
+	<input type="button" id="rbtn" value="보낸쪽지함" onClick="location.href='<c:url value='/message/messageSent' />'">
 	<br><br>
 	<table>
 			<tr>

@@ -45,15 +45,28 @@
 			color : #FFFFFF;
 			float : right;
 		}
-		h3{
-			text-align : center;
-		}
+		
+		#rbtn {
+         width : 100px;
+       	 height : 20px;
+         border-radius : 3px; 
+         border : 1px solid #ab2948; 
+         background-color : #FFFFFF;
+         color : #ab2948;
+         
+                  
+      }
 	</style>
 </head>
 <body>
+<div align="center">
 	<h2>보낸 메시지함</h2>
+	
 	<form action="<c:url value='/message/messageSent' />" 
    name="messageSend" method="POST">
+   <input type="button" id="rbtn" value="매칭 게시판" onClick="location.href='<c:url value='/matching/list' />'">
+	<input type="button" id="rbtn" value="받은쪽지함" onClick="location.href='<c:url value='/message/messageReceive' />'">
+	<br><br>
 	<table>
 		<thead>
 			<tr>
@@ -73,8 +86,7 @@
 		</thead>
 	</table>
 	</form>
-
-	<input type="button" id="send" value="매칭 게시판 이동" onClick="location.href='<c:url value='/matching/list' />'">
-	<input type="button" id="receive" value="받은쪽지목록" onClick="location.href='<c:url value='/message/messageReceive' />'">
+</div>
+	
 </body>
 </html>
