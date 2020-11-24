@@ -1,85 +1,226 @@
 package model.dao.impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-import model.dao.*;
-import model.*;
+import model.Rent;
+import model.dao.ConnectionManager;
+import model.dao.RentDao;
+
+
+
 
 public class RentDAOImpl implements RentDao {
 	
-private JDBCUtil jdbcUtil = null;
+	private ConnectionManager cm = new ConnectionManager();
 	
-	private static String query = "SELECT RENT.RENTAL_TIME AS RENTAL_T, " +
-								  "       RENT.RETURN_TIME AS RETURN_T, " +
-								  "       RENT.USE AS USE_IF, " +
-								  "       RENT.RENTAL_NAME AS RENTAL_N " +
-								  "       RENT.BIKE_ID AS B_ID " +
-								  "       RENT.USER_ID AS U_ID " +
-								  "FROM RENT ";
+	public static java.sql.Date getCurrentDatetime() {
+	       java.util.Date today = new java.util.Date();
+	       return new java.sql.Date(today.getTime());
+	}
+	
+	public Rent getRentByUserId(String user_id) {
 		
-	public RentDAOImpl() {
-		jdbcUtil = new JDBCUtil();
-	}
-
-	@Override
-	public List<Rent> getRentList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int insertRent(Rent rent) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int updateRent(Rent rent) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int deleteRent(String user_id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public Rent getRentOfficeByBikeId(String bike_id) {
-		String searchQuery = query + "WHERE RENT.B_ID = ?";
-		Object[] param = new Object[] {bike_id};
-
-		jdbcUtil.setSql(searchQuery);
-		jdbcUtil.setParameters(param);
-	
+		Connection conn = null;
+		PreparedStatement pStmt = null;
+		ResultSet rs = null;
+		
+		String query = "SELECT rental_time, return_time, use, user_id, bike_id, rental_name "
+				+ "FROM BIKE b, RENT r"
+				+ "WHERE user_id = ? and b.bike_id = r.bike_id";
+		
 		try {
-			ResultSet rs = jdbcUtil.executeQuery();
-			Rent dto = new Rent();
-			while (rs.next()) {
-				dto.setBike_id(rs.getString("B_ID"));
-				dto.setUser_id(rs.getString("U_ID"));
-				dto.setRental_time(rs.getDate("RENTAL_T"));
-				dto.setReturn_time(rs.getDate("RETURN_T"));
-				dto.setUse(rs.getInt("USE_IF"));
-				dto.setRental_name(rs.getString("RENTAL_N"));
-			}
-			return dto;
-		} catch (Exception ex) {
+			conn = cm.getConnection();
+			pStmt = conn.prepareStatement(query);
+			pStmt.setString(1, user_id);
+			rs = pStmt.executeQuery();
+			
+			if (rs.next()) {
+				Date rental_time = rs.getDate("rental_time");
+				Date return_time = rs.getDate("return_time");
+				int use = rs.getInt("use");
+				String user_Id = rs.getString("user_id");
+				String bike_id = rs.getString("bike_id");
+				String rental_name = rs.getString("rental_name");
+
+				Rent rt = new Rent(rental_time, return_time, use, user_Id, bike_id, rental_name);
+				
+				return rt;
+			}	
+		} catch (SQLException ex) {
 			ex.printStackTrace();
 		} finally {
-			jdbcUtil.close();
+			if (rs != null) 
+				try { 
+					rs.close(); 
+				} catch (SQLException ex) { ex.printStackTrace(); }
+			if (pStmt != null) 
+				try { 
+					pStmt.close(); 
+				} catch (SQLException ex) { ex.printStackTrace(); }
+			if (conn != null) 
+				try { 
+					conn.close(); 
+				} catch (SQLException ex) { ex.printStackTrace(); }
+		}	
+		
+		return null;
+	}
+	
+	public List<Rent> getRentList(String rental_name) {
+		
+		Connection conn = null;
+		PreparedStatement pStmt = null;
+		ResultSet rs = null;
+		
+		String query = "SELECT rental_time, return_time, use, user_id, bike_id, rental_name "
+				+ "FROM BIKE b, RENT r"
+				+ "WHERE b.bike_id = r.bike_id";
+		
+		try {
+			conn = cm.getConnection();
+			pStmt = conn.prepareStatement(query);
+			pStmt.setString(1, rental_name);
+			rs = pStmt.executeQuery();
+			
+			List<Rent> list = new ArrayList<Rent>();
+			if (rs.next()) {
+				Date rental_time = rs.getDate("rental_time");
+				Date return_time = rs.getDate("return_time");
+				int use = rs.getInt("use");
+				String user_id = rs.getString("user_id");
+				String bike_id = rs.getString("bike_id");
+				String rental_Name = rs.getString("rental_name");
+					
+				Rent rt = new Rent(rental_time, return_time, use, user_id, bike_id, rental_Name);
+				list.add(rt);	
+			}
+			return list;
 		}
+		catch (SQLException ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) 
+				try { 
+					rs.close(); 
+				} catch (SQLException ex) { ex.printStackTrace(); }
+			if (pStmt != null) 
+				try { 
+					pStmt.close(); 
+				} catch (SQLException ex) { ex.printStackTrace(); }
+			if (conn != null) 
+				try { 
+					conn.close(); 
+				} catch (SQLException ex) { ex.printStackTrace(); }
+		}	
 		return null;
 	}
 
-	@Override
-	public Rent getRentOfficeByUserId(String user_id) {
-		// TODO Auto-generated method stub
+	public Rent insertRent(Rent rent) {
+		Connection conn = null;
+		PreparedStatement pStmt = null;
+		ResultSet rs = null;
+		
+		String query =  "INSERT INTO RENT (rental_time, return_time, use, user_id, bike_id, rental_Name) " +
+				 "VALUES (?, ?, ?, ?, ?, ?) ";
+		
+		try {
+			conn = cm.getConnection();
+			
+			pStmt = conn.prepareStatement(query);
+			java.sql.Date date1 = getCurrentDatetime();
+			pStmt.setDate(1, date1);
+			java.sql.Date date2 = getCurrentDatetime();
+			pStmt.setDate(2, date2);
+			pStmt.setInt(3, rent.getUse());
+			pStmt.setString(4, rent.getUser_id());
+			pStmt.setString(5, rent.getBike_id());
+			pStmt.setString(6, rent.getRental_name());
+			
+			rs = pStmt.executeQuery();
+			System.out.println("insertRent 완료 ");
+			
+//			if (rs.next()) {
+//				Date rental_time = rs.getDate("rental_time");
+//				Date return_time = rs.getDate("return_time");
+//				int use = rs.getInt("use");
+//				String user_id = rs.getString("user_id");
+//				String bike_id = rs.getString("bike_id");
+//				String rental_Name = rs.getString("rental_name");
+//				
+//				Rent rt = new Rent(rental_time, return_time, use, user_id, bike_id, rental_Name);
+//				return rt;
+//			}	
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) 
+				try { 
+					rs.close(); 
+				} catch (SQLException ex) { ex.printStackTrace(); }
+			if (pStmt != null) 
+				try { 
+					pStmt.close(); 
+				} catch (SQLException ex) { ex.printStackTrace(); }
+			if (conn != null) 
+				try { 
+					conn.close(); 
+				} catch (SQLException ex) { ex.printStackTrace(); }
+		}	
+		
 		return null;
 	}
 
+	public int deleteRent(String user_id) {
+		Connection conn = null;
+		PreparedStatement pStmt = null;
+		ResultSet rs = null;
+		
+		String query = "DELETE FROM RENT WHERE user_id = ?";
+		
+		try {
+			conn = cm.getConnection();
+			pStmt = conn.prepareStatement(query);
+			pStmt.setString(1, user_id);
+			rs = pStmt.executeQuery();
+			System.out.println("deleteRent 완료");
+			
+//			if (rs.next()) {
+//	
+//				Date rental_time = rs.getDate("rental_time");
+//				Date return_time = rs.getDate("return_time");
+//				int use = rs.getInt("use");
+//				String user_Id = rs.getString("user_id");
+//				String bike_id = rs.getString("bike_id");
+//				String rental_Name = rs.getString("rental_name");
+//				
+//				Rent rt = new Rent(rental_time, return_time, use, user_Id, bike_id, rental_Name);
+//				return rt;
+//			}	
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null) 
+				try { 
+					rs.close(); 
+				} catch (SQLException ex) { ex.printStackTrace(); }
+			if (pStmt != null) 
+				try { 
+					pStmt.close(); 
+				} catch (SQLException ex) { ex.printStackTrace(); }
+			if (conn != null) 
+				try { 
+					conn.close(); 
+				} catch (SQLException ex) { ex.printStackTrace(); }
+		}	
+		
+		return 0;
+	}
 
 
 }

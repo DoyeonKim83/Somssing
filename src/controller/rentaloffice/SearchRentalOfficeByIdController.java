@@ -18,6 +18,7 @@ public String execute(HttpServletRequest request, HttpServletResponse response) 
       result = manager.getRentalOfficeById(rentalOffice_id);
       
       if (result == null) {
+    	 System.out.print("존재하지 않는 대여소 아이디입니다");
          return "/RentalOffice/ById.jsp";
       }   
        

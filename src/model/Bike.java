@@ -9,6 +9,18 @@ public class Bike {
 	private String rental_id;
 	private String rental_name;
 	
+	
+	public Bike(String bike_id, int rental_num, int rental_ok, int broken_ok, int lost_ok, String rental_id,
+			String rental_name) {
+		super();
+		this.bike_id = bike_id;
+		this.rental_num = rental_num;
+		this.rental_ok = rental_ok;
+		this.broken_ok = broken_ok;
+		this.lost_ok = lost_ok;
+		this.rental_id = rental_id;
+		this.rental_name = rental_name;
+	}
 	public String getBike_id() {
 		return bike_id;
 	}

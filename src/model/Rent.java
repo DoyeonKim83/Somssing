@@ -10,6 +10,16 @@ public class Rent {
 	private String bike_id;
 	private String rental_name;
 	
+	public Rent(Date rental_time, Date return_time, int use, String user_id, String bike_id, String rental_name) {
+		super();
+		this.rental_time = rental_time;
+		this.return_time = return_time;
+		this.use = use;
+		this.user_id = user_id;
+		this.bike_id = bike_id;
+		this.rental_name = rental_name;
+	}
+	
 	public Date getRental_time() {
 		return rental_time;
 	}

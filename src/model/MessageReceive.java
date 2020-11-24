@@ -9,6 +9,15 @@ public class MessageReceive {
 	private String receiver_id;
 	private String sender_id;
 	
+	public MessageReceive(int msg_id, String msg_content, Date receive_time, String receiver_id, String sender_id) {
+		super();
+		this.msg_id = msg_id;
+		this.msg_content = msg_content;
+		this.receive_time = receive_time;
+		this.receiver_id = receiver_id;
+		this.sender_id = sender_id;
+	}
+	
 	public int getMsg_id() {
 		return msg_id;
 	}

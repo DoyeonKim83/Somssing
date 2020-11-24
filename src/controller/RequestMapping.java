@@ -6,9 +6,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.user.*;
+import controller.bike.*;
 import controller.matching.*;
-import controller.menu.MenuController;
-import controller.menu.ViewUserBikeController;
+import controller.menu.MainController;
+import controller.message.*;
 import controller.rentaloffice.SearchRentalOfficeByAreaController;
 import controller.rentaloffice.SearchRentalOfficeByIdController;
 import controller.rentaloffice.SearchRentalOfficeByNameController;
@@ -23,10 +24,8 @@ public class RequestMapping {
 
     public void initMapping() {
         mappings.put("/", new ForwardController("index.jsp"));
-        mappings.put("/main", new ForwardController("/main/MainPage.jsp"));
-        mappings.put("/menu", new MenuController());
-        mappings.put("/mybike", new ViewUserBikeController());
-        
+        mappings.put("/main", new MainController());
+        mappings.put("/menu", new ForwardController("/main/MenuPage.jsp"));
         
         //login, register
         mappings.put("/user/loginForm", new ForwardController("/user/loginForm.jsp"));
@@ -74,7 +73,24 @@ public class RequestMapping {
         mappings.put("/matching/writeForm", new ForwardController("/matching/matchingWriting.jsp"));
         mappings.put("/matching/write", new MatchingWritingController());
         mappings.put("/matching/delete", new MatchingDeletePostController());
-
+        
+        mappings.put("/user/bike/rent", new BikeRentController());
+        mappings.put("/BikeServices/return", new BikeReturnController());
+        mappings.put("/BikeServices/history", new BikeHistoryController());
+        
+        mappings.put("/message/messageReceive", new MessageReceiveController());
+        mappings.put("/message/messageReceivelist", new ForwardController("/message/messageReceive.jsp"));
+        mappings.put("/message/messageSend", new MessageSendController());
+        mappings.put("/message/messageSendlist", new ForwardController("/message/messageSent.jsp"));
+        mappings.put("/message/messageSent", new MessageSentController());
+        mappings.put("/message/messageSentlist", new ForwardController("/message/messageSent.jsp"));
+        mappings.put("/rent/rent", new BikeRentController());
+        mappings.put("/rent/rentList", new ForwardController("/rent/rentList.jsp"));
+        mappings.put("/rent/return", new BikeReturnController());
+        mappings.put("/rent/returnList", new ForwardController("/rent/returnList.jsp"));
+        
+        //ViewUserBikeController
+        
         mappings.put("/recommendation", new ForwardController("/recommendation/search.jsp"));
         mappings.put("/recommendation/result", new RouteResultController());
         

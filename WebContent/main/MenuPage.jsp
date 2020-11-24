@@ -15,6 +15,15 @@
    font-family: 'Nanum Gothic', sans-serif;
 }
 
+#logoutBtn {
+				width : 250px;
+				height : 35px;
+				border : 1px solid  #ab2948;
+				background-color :  #ab2948;
+				color : #FFFFFF;
+				border-radius : 30px;
+			}
+			
  .menu { 
  text-align:center;
  background-color:white;  
@@ -38,14 +47,10 @@
 <body>
 <div style="padding:20px 30px 10px 30px">
 	<div align="left">
-			<a href="<c:url value='/main' />"><img src="../images/back.png" width="35" height="30"></a>
+			<a href="<c:url value='/main' />"><img src="<c:url value='/images/back.png' />" width="35" height="30"></a>
 		</div>
 		
-	<div align="center" style="padding:100px 30px 100px 30px;">
-		<div class="aboutme" style="height:250px; width:70%">
-		<img src="">간단한회원정보(사진, 안녕하세요 00님!, 뱃지)와 로그아웃버튼 만들기</div>
-	</div>
-
+	
 	<div align="center">
 		<table align="center" border="0" width="70%" height="500" style="table-layout: fixed; border-spacing:20px;">
 			<tr>
@@ -62,6 +67,11 @@
 			</tr>
 		 </table>
 	 </div>
+	 
+	 <div align="center">
+		<button id="logoutBtn" onclick="location.href='<c:url value='/user/logout' />'">로그아웃</button>
+	</div>
+	 
  </div>
 
 

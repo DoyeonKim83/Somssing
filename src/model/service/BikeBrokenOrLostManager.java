@@ -1,5 +1,6 @@
 package model.service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import model.BikeBrokenOrLost;
@@ -24,18 +25,18 @@ public class BikeBrokenOrLostManager {
    }
    
 
-   public List<BikeBrokenOrLost> getBikeBrokenOrLostList(String user_id) {
+   public List<BikeBrokenOrLost> getBikeBrokenOrLostList(String user_id) throws SQLException {
       return bikeBrokenOrLostDao.getBikeBrokenOrLostList(user_id);
    }
 
    public int insertBikeBroken(String bike_id, String rentalOffice_name, 
-         String rentalOffice_id, String why_BrokenOrLost) {
+         String rentalOffice_id, String why_BrokenOrLost)  throws SQLException{
 			return bikeBrokenOrLostDao.insertBikeBroken(bike_id, 
 					rentalOffice_name, rentalOffice_id, why_BrokenOrLost);
    }
    
    public int insertBikeLost(String bike_id, String rentalOffice_name, 
-         String rentalOffice_id, String why_BrokenOrLost) {
+         String rentalOffice_id, String why_BrokenOrLost)  throws SQLException{
 	   		return bikeBrokenOrLostDao.insertBikeLost(bike_id, 
 					rentalOffice_name, rentalOffice_id, why_BrokenOrLost);
    }

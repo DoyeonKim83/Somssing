@@ -27,7 +27,7 @@
 <div style="padding:20px 30px 10px 30px">
 
 	<div align="left">
-      <a href="<c:url value='/menu' />"><img src="../images/menuicon.png" width="35" height="30" /></a>
+      <a href="<c:url value='/menu' />"><img src="<c:url value='/images/menuicon.png' />" width="35" height="30" /></a>
    </div>
 
 	<div align="center">
@@ -44,12 +44,21 @@
 		
 		<div style="border: 1px solid white;" align="center">
 			<div align="center" style="background-color: #f0b3c1; border-radius: 2em; padding:20px 50px 20px 50px;">
-				<h4>My Bike</h4><br>
+				<h4>My Bike</h4><br>				
 					${user.userName} 님 환영합니다!<br><br>
 					사용중인 자전거 : ${rent.bike_id} <br>
 					남은 시간 : ${user.remain_time} <br>
 			</div>
 		</div>
+		
+		<c:forEach var="RentalOffice" items="${list}">
+   <tr height="40">
+      <td width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE">${RentalOffice.rentalOffice_name}</td> 
+      <td width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE">${RentalOffice.rentalOffice_id}</td>
+      <td width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE">${RentalOffice.latitude}</td>
+      <td width="150" bgcolor="f0b3c1" align="center" bgcolor="E6ECDE">${RentalOffice.longitude}</td>
+   </tr>
+</c:forEach>
 		
 		
 		<div align="left" style="padding:0px 10px 0px 10px; height:90%; ">
